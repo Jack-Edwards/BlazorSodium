@@ -1,0 +1,11 @@
+﻿<h3>BlazorSodiumComponent</h3>
+
+@code {
+   [Inject]
+   IBlazorSodiumService BlazorSodiumService { get; set; }
+
+   protected override async Task OnInitializedAsync()
+   {
+      await BlazorSodiumService.InitializeAsync();
+   }
+}
