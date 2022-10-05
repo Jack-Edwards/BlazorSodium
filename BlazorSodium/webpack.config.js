@@ -7,7 +7,7 @@ module.exports = {
    mode: 'development',
    target: 'web',
    output: {
-      path: path.resolve(__dirname, 'wwwroot/js'),
+      path: path.resolve(__dirname, 'wwwroot'),
       filename: '[name].js'
    },
    resolve: {
