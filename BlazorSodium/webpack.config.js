@@ -16,5 +16,5 @@ module.exports = {
          crypto: require.resolve('crypto-browserify/'),
          stream: require.resolve('stream-browserify/')
       }
-   },
+   }
 }

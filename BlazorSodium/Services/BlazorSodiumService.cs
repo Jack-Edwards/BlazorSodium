@@ -1,11 +1,13 @@
-﻿using Microsoft.JSInterop;
+﻿using BlazorSodium.Sodium.PasswordHash;
+using Microsoft.JSInterop;
+using System;
 using System.Threading.Tasks;
 
 namespace BlazorSodium.Services
 {
    public interface IBlazorSodiumService
    {
-      Task InitializeAsync();
+      Task PasswordHashAsync();
    }
 
    public class BlazorSodiumService : IBlazorSodiumService
@@ -17,9 +19,10 @@ namespace BlazorSodium.Services
          _jsRuntime = jsRuntime;
       }
 
-      public async Task InitializeAsync()
+      public async Task PasswordHashAsync()
       {
-         //await _jsRuntime.InvokeVoidAsync("eval", new object[] { _bootstrapperScript });
+         byte[] hashedPassword = await BlazorSodium.Sodium.PasswordHash.PasswordHash.HashStringAsync(_jsRuntime, "foo");
+         Console.WriteLine(Convert.ToBase64String(hashedPassword));
       }
    }
 }

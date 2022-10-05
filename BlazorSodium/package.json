@@ -4,7 +4,7 @@
    "description": "",
    "main": "index.js",
    "scripts": {
-      "build": "webpack ./Npm/src/index.js --config ./webpack.config.js --output-path ./wwwroot --output-filename BlazorSodium.bundle.js"
+      "build": "webpack ./Npm/src/index.js --config ./webpack.config.js --output-path ./wwwroot --output-filename blazorSodium.bundle.js"
    },
    "author": "Jack Edwards",
    "license": "MIT",
