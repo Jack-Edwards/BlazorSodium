@@ -12,16 +12,18 @@ namespace BlazorSodium.Services
 
    public class BlazorSodiumService : IBlazorSodiumService
    {
-      private readonly IJSRuntime _jsRuntime;
+      private readonly IJSInProcessRuntime _inProcessRuntime;
+      private readonly IJSRuntime _standardJsRuntime;
 
       public BlazorSodiumService(IJSRuntime jsRuntime)
       {
-         _jsRuntime = jsRuntime;
+         _inProcessRuntime = (IJSInProcessRuntime)jsRuntime;
+         _standardJsRuntime = jsRuntime;
       }
 
       public async Task PasswordHashAsync()
       {
-         byte[] hashedPassword = await BlazorSodium.Sodium.PasswordHash.PasswordHash.HashStringAsync(_jsRuntime, "foo");
+         byte[] hashedPassword = await BlazorSodium.Sodium.PasswordHash.PasswordHash.HashStringAsync(_inProcessRuntime, _standardJsRuntime, "foo");
          Console.WriteLine(Convert.ToBase64String(hashedPassword));
       }
    }
