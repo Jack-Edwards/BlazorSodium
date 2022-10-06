@@ -4,8 +4,9 @@
    [Inject]
    IBlazorSodiumService BlazorSodiumService { get; set; }
 
-   protected override async Task OnInitializedAsync()
+   protected override void OnInitialized()
    {
-      await BlazorSodiumService.PasswordHashAsync();
+      byte[] saltBytes = BlazorSodiumService.PasswordHash.ArgonGenerateSalt();
+      Console.WriteLine(saltBytes.Length);
    }
 }

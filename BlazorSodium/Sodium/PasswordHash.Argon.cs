@@ -1,11 +1,10 @@
-﻿using Microsoft.JSInterop;
-using System;
+﻿using System;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace BlazorSodium.Sodium.PasswordHash
+namespace BlazorSodium.Sodium
 {
-   public static partial class PasswordHash
+   public partial class PasswordHash
    {
       public const uint ARGON_SALTBYTES = 16;
 
@@ -25,27 +24,27 @@ namespace BlazorSodium.Sodium.PasswordHash
       /// <summary>
       /// 
       /// </summary>
-      /// <param name="inProcessRuntime"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/randombytes_buf.json"/>
-      public static byte[] ArgonGenerateSalt(IJSInProcessRuntime inProcessRuntime)
+      public byte[] ArgonGenerateSalt()
       {
-         return inProcessRuntime.Invoke<byte>("window._sodium.randombytes_buf", new object[] { ARGON_SALTBYTES });
+         return _runtime.Invoke<byte[]>("window._sodium.randombytes_buf", new object[] { ARGON_SALTBYTES });
       }
 
       /// <summary>
       /// 
       /// </summary>
-      /// <param name="inProcessRuntime"></param>
+      /// <param name="outputLength"></param>
       /// <param name="password"></param>
+      /// <param name="salt"></param>
       /// <param name="opsLimit"></param>
       /// <param name="memoryLimit"></param>
       /// <param name="algorithm"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_pwhash.json"/>
-      public static byte[] HashString(IJSInProcessRuntime inProcessRuntime, string password, uint opsLimit = OPSLIMIT_INTERACTIVE, uint memoryLimit = MEMLIMIT_INTERACTIVE, uint algorithm = 1)
+      public byte[] ArgonHashBinary(uint outputLength, byte[] password, byte[] salt, uint opsLimit, uint memoryLimit, uint algorithm)
       {
-         return inProcessRuntime.Invoke<byte[]>("window._sodium.crypto_pwhash", new object[] { 32, password, randomSalt, opsLimit, memoryLimit, algorithm });
+         return _runtime.Invoke<byte[]>("window._sodium.crypto_pwhash", new object[] { outputLength, password, salt, opsLimit, memoryLimit, algorithm });
       }
    }
 }
