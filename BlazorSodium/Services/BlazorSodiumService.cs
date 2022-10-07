@@ -1,24 +1,33 @@
 ﻿using BlazorSodium.Sodium;
 using Microsoft.JSInterop;
 using System;
+using System.Runtime.InteropServices.JavaScript;
+using System.Security;
 using System.Threading.Tasks;
 
 namespace BlazorSodium.Services
 {
    public interface IBlazorSodiumService
    {
-      PasswordHash PasswordHash { get; }
+      Task InitializeAsync();
    }
 
-   public class BlazorSodiumService : IBlazorSodiumService
+   public partial class BlazorSodiumService : IBlazorSodiumService
    {
-      public PasswordHash PasswordHash { get; }
-
       public BlazorSodiumService(IJSRuntime jsRuntime)
       {
          IJSInProcessRuntime inProcessRuntime = (IJSInProcessRuntime)jsRuntime;
 
-         PasswordHash = new PasswordHash(inProcessRuntime);
+         //PasswordHash = new PasswordHash(inProcessRuntime);
       }
+
+      public async Task InitializeAsync()
+      {
+
+         await InitializeInternalAsync();
+      }
+
+      [JSImport("sodium.ready", "blazorSodium")]
+      internal static partial Task InitializeInternalAsync();
    }
 }

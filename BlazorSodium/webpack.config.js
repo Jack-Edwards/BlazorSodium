@@ -8,7 +8,9 @@ module.exports = {
    target: 'web',
    output: {
       path: path.resolve(__dirname, 'wwwroot'),
-      filename: '[name].js'
+      filename: 'blazorSodium.bundle.js',
+      libraryTarget: "var",
+      library: "sodium",
    },
    resolve: {
       fallback: {

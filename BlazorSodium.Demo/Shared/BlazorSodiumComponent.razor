@@ -1,12 +1,1 @@
 ﻿<h3>BlazorSodiumComponent</h3>
-
-@code {
-   [Inject]
-   IBlazorSodiumService BlazorSodiumService { get; set; }
-
-   protected override void OnInitialized()
-   {
-      byte[] saltBytes = BlazorSodiumService.PasswordHash.ArgonGenerateSalt();
-      Console.WriteLine(saltBytes.Length);
-   }
-}
