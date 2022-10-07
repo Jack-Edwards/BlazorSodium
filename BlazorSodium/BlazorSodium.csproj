@@ -21,10 +21,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0-rc.1.22427.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
       <Exec Command="npm install" />
       <Exec Command="npm run build" />
