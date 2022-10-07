@@ -2,15 +2,17 @@
 const webpack = require('webpack');
 
 module.exports = {
-   name: 'blazorsodium-webpack-configuration',
-   entry: './',
-   mode: 'development',
+   name: 'blazorSodium',
    target: 'web',
+   experiments: {
+      outputModule: true,
+   },
    output: {
       path: path.resolve(__dirname, 'wwwroot'),
       filename: 'blazorSodium.bundle.js',
-      libraryTarget: "var",
-      library: "sodium",
+      library: {
+         type: 'module'
+      }
    },
    resolve: {
       fallback: {
