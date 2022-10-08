@@ -1,11 +1,12 @@
 ﻿<h3>BlazorSodiumComponent</h3>
 
-@code {
-   [Inject]
-   IBlazorSodiumService BlazorSodiumService { get; set; }
+<p>Argon Salt:</p>
+<input type="text" style="width:500px;" @bind="SaltString" />
+<button type="submit" @onclick="GenerateRandomSalt">Click me to generate a random salt</button>
 
-   protected override async Task OnInitializedAsync()
-   {
-      await BlazorSodiumService.PasswordHashAsync();
-   }
-}
+<p>Plaintext password</p>
+<input type="text" @bind="Password" />
+<button type="submit" @onclick="GeneratePasswordHash">Click me to hash the provided password</button>
+
+<p>Argon hashed password</p>
+<input type="text" style="width:500px;" @bind="HashedPassword" />
