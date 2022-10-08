@@ -1,40 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using BlazorSodium.Services;
+using BlazorSodium.Sodium;
+using Microsoft.AspNetCore.Components;
+using System;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.JSInterop;
-using System.Runtime.InteropServices.JavaScript;
-using System.Runtime.Versioning;
-using System.Text.Json.Serialization;
-using System.Text.Json.Serialization.Metadata;
-using System.Diagnostics.CodeAnalysis;
 
 namespace BlazorSodium.Demo.Shared
 {
-   public partial class BlazorSodiumComponent
+   public partial class BlazorSodiumComponent : ComponentBase
    {
+      [Inject]
+      IBlazorSodiumService BlazorSodiumService { get; set; }
+
+      private string SaltString { get; set; }
+      protected byte[] Salt { get; set; }
+      protected string Password { get; set; }
+      protected string HashedPassword { get; set; }
+
       protected override async Task OnInitializedAsync()
       {
-         await JSHost.ImportAsync("blazorSodium", "../_content/BlazorSodium/blazorSodium.bundle.js");
-         Interop.LogSomething("foo");
-         await Interop.InitializeAsync();
+         await BlazorSodiumService.InitializeAsync();
       }
 
-      [SupportedOSPlatform("browser")]
-      public partial class Interop
+      protected void GenerateRandomSalt()
       {
-         [DynamicDependency(DynamicallyAccessedMemberTypes.PublicMethods, typeof(JsonTypeInfo))]
-         [DynamicDependency(DynamicallyAccessedMemberTypes.PublicMethods, typeof(JsonSerializerContext))]
-         static Interop()
+         Salt = new byte[16];
+         PasswordHash.ArgonGenerateSalt().CopyTo(Salt, 0);
+         SaltString = Convert.ToHexString(Salt);
+      }
+
+      protected void GeneratePasswordHash()
+      {
+         if (Password is not null && Salt is not null)
          {
+            byte[] passwordBytes = Encoding.UTF8.GetBytes(Password);
+            byte[] passwordHash = PasswordHash.ArgonHashBinary(
+               outputLength: 32,
+               password: passwordBytes,
+               salt: Salt,
+               opsLimit: PasswordHash.OPSLIMIT_INTERACTIVE,
+               memoryLimit: PasswordHash.MEMLIMIT_INTERACTIVE,
+               algorithm: PasswordHash.crypto_pwhash_argon2i_ALG_ARGON2I13);
+
+            HashedPassword = Convert.ToHexString(passwordHash);
          }
-
-         [JSImport("logSomething", "blazorSodium")]
-         public static partial void LogSomething(string something);
-
-         [JSImport("sodium.ready", "blazorSodium")]
-         public static partial Task InitializeAsync();
       }
    }
 }

@@ -12,12 +12,9 @@ namespace BlazorSodium.Extensions
 {
    public static class AddBlazorSodiumExtension
    {
-      public static IServiceCollection AddBlazorSodium(this IServiceCollection services)
+      public static void AddBlazorSodium(this IServiceCollection services)
       {
-         return ServiceCollectionDescriptorExtensions.Add(services,
-            new ServiceDescriptor(typeof(IBlazorSodiumService),
-            serviceProvider => new BlazorSodiumService(serviceProvider.GetRequiredService<IJSRuntime>()),
-            ServiceLifetime.Scoped));
+         services.TryAddScoped<IBlazorSodiumService, BlazorSodiumService>();
       }
    }
 }

@@ -4,7 +4,6 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
-     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
    <ItemGroup>
