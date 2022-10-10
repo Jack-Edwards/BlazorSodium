@@ -1,25 +1,35 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <Nullable>disable</Nullable>
-    <ImplicitUsings>disable</ImplicitUsings>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
+   <PropertyGroup>
+      <TargetFramework>net7.0</TargetFramework>
+      <Nullable>disable</Nullable>
+      <ImplicitUsings>disable</ImplicitUsings>
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+      <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+      <Title>BlazorSodium</Title>
+      <Authors>Jack Edwards</Authors>
+      <Description>Simple wrapper over libsodium.js to use in Blazor WASM projects</Description>
+      <PackageProjectUrl></PackageProjectUrl>
+      <RepositoryUrl>https://github.com/Jack-Edwards/BlazorSodium</RepositoryUrl>
+      <PackageLicenseExpression>MIT</PackageLicenseExpression>
+      <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+      <IncludeSymbols>True</IncludeSymbols>
+      <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+   </PropertyGroup>
 
-  <ItemGroup>
-    <Content Include="Npm\src\blazorSodium.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+   <ItemGroup>
+      <Content Include="Npm\src\blazorSodium.js">
+         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+   </ItemGroup>
 
-  <ItemGroup>
-    <SupportedPlatform Include="browser" />
-  </ItemGroup>
+   <ItemGroup>
+      <SupportedPlatform Include="browser" />
+   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0-rc.1.22427.2" />
-  </ItemGroup>
+   <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.0-rc.1.22427.2" />
+   </ItemGroup>
 
    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
       <Exec Command="npm install" />
