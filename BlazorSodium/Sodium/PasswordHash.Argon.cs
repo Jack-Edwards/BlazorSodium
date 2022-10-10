@@ -25,14 +25,6 @@ namespace BlazorSodium.Sodium
       /// <summary>
       /// 
       /// </summary>
-      /// <returns></returns>
-      /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/randombytes_buf.json"/>
-      [JSImport("sodium.randombytes_buf", "blazorSodium")]
-      public static partial byte[] ArgonGenerateSalt(int size = ARGON_SALTBYTES);
-
-      /// <summary>
-      /// 
-      /// </summary>
       /// <param name="outputLength"></param>
       /// <param name="password"></param>
       /// <param name="salt"></param>

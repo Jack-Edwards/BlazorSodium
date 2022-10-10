@@ -25,7 +25,7 @@ namespace BlazorSodium.Demo.Shared
       protected void GenerateRandomSalt()
       {
          Salt = new byte[16];
-         PasswordHash.ArgonGenerateSalt().CopyTo(Salt, 0);
+         RandomBytes.RandomBytes_Buf(16).CopyTo(Salt, 0);
          SaltString = Convert.ToHexString(Salt);
       }
 
