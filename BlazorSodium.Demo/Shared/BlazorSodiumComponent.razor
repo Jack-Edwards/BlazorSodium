@@ -10,3 +10,12 @@
 
 <p>Argon hashed password</p>
 <input type="text" style="width:500px;" @bind="HashedPassword" />
+
+<p>Public key signature</p>
+<button type="submit" @onclick="GeneratePublicKeySignatureKeyPair">Click me to create a Public Key Signature key pair</button>
+
+<p>Public key</p>
+<input type="text" style="width:500px;" @bind="PublicKey" />
+
+<p>Private key</p>
+<input type="text" style="width:500px;" @bind="PrivateKey" />
