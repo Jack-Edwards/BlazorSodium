@@ -5,6 +5,7 @@
       <Nullable>disable</Nullable>
       <ImplicitUsings>disable</ImplicitUsings>
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+      <LangVersion>preview</LangVersion>
       <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
       <Title>BlazorSodium</Title>
       <Authors>Jack Edwards</Authors>

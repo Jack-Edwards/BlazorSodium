@@ -1,5 +1,6 @@
 ﻿using BlazorSodium.Services;
 using BlazorSodium.Sodium;
+using BlazorSodium.Sodium.Models;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Text;
@@ -12,16 +13,13 @@ namespace BlazorSodium.Demo.Shared
       [Inject]
       IBlazorSodiumService BlazorSodiumService { get; set; }
 
-      private string SaltString { get; set; }
-      protected byte[] Salt { get; set; }
-      protected string Password { get; set; }
-      protected string HashedPassword { get; set; }
-
       protected override async Task OnInitializedAsync()
       {
          await BlazorSodiumService.InitializeAsync();
       }
 
+      private string SaltString { get; set; }
+      protected byte[] Salt { get; set; }
       protected void GenerateRandomSalt()
       {
          Salt = new byte[16];
@@ -29,6 +27,8 @@ namespace BlazorSodium.Demo.Shared
          SaltString = Convert.ToHexString(Salt);
       }
 
+      protected string Password { get; set; }
+      protected string HashedPassword { get; set; }
       protected void GeneratePasswordHash()
       {
          if (Password is not null && Salt is not null)
@@ -44,6 +44,15 @@ namespace BlazorSodium.Demo.Shared
 
             HashedPassword = Convert.ToHexString(passwordHash);
          }
+      }
+
+      protected string PublicKey { get; set; }
+      protected string PrivateKey { get; set; }
+      protected void GeneratePublicKeySignatureKeyPair()
+      {
+         KeyPair keyPair = PublicKeySignature.Crypto_Sign_KeyPair();
+         PublicKey = Convert.ToHexString(keyPair.PublicKey);
+         PrivateKey = Convert.ToHexString(keyPair.PrivateKey);
       }
    }
 }
