@@ -1,6 +1,6 @@
 ﻿export const sodium = require('libsodium-wrappers');
 
-export async function blazorSodiumInit() {
+export async function init() {
    await sodium.ready;
    console.log(`Using sodium version: ${sodium.sodium_version_string()}`);
 

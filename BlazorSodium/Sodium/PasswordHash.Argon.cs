@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices.JavaScript;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Runtime.InteropServices.JavaScript;
 
 namespace BlazorSodium.Sodium
 {

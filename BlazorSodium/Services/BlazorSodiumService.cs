@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices.JavaScript;
+﻿using System;
+using System.Runtime.InteropServices.JavaScript;
 using System.Threading.Tasks;
 
 namespace BlazorSodium.Services
@@ -15,11 +16,14 @@ namespace BlazorSodium.Services
 
       public async Task InitializeAsync()
       {
-         await JSHost.ImportAsync("blazorSodium", "../_content/BlazorSodium/blazorSodium.bundle.js");
-         await PrivateInitializeAsync();
+         if (OperatingSystem.IsBrowser())
+         {
+            await JSHost.ImportAsync("blazorSodium", "../_content/BlazorSodium/blazorSodium.bundle.js");
+            await PrivateInitializeAsync();
+         }
       }
 
-      [JSImport("blazorSodiumInit", "blazorSodium")]
+      [JSImport("init", "blazorSodium")]
       private static partial Task PrivateInitializeAsync();
    }
 }
