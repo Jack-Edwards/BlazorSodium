@@ -50,7 +50,7 @@ namespace BlazorSodium.Demo.Shared
       protected string PrivateKey { get; set; }
       protected void GeneratePublicKeySignatureKeyPair()
       {
-         KeyPair keyPair = PublicKeySignature.Crypto_Sign_KeyPair();
+         Ed25519KeyPair keyPair = PublicKeySignature.Crypto_Sign_KeyPair();
          PublicKey = Convert.ToHexString(keyPair.PublicKey);
          PrivateKey = Convert.ToHexString(keyPair.PrivateKey);
       }
