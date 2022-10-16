@@ -13,7 +13,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_stream_chacha20.json"/>
       [JSImport("sodium.crypto_stream_chacha20", "blazorSodium")]
-      public static partial byte[] Crypto_Stream_Chacha20(int outLength, byte[] key, byte[] nonce);
+      public static partial byte[] Crypto_Stream_Chacha20(int outputLength, byte[] key, byte[] nonce);
 
       /// <summary>
       /// 
@@ -24,7 +24,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_stream_chacha20_ietf_xor.json"/>
       [JSImport("sodium.crypto_stream_chacha20_ietf_xor", "blazorSodium")]
-      public static partial byte[] Crypto_Stream_ChaCha20_IETF_XOR(byte[] input_message, byte[] nonce, byte[] key);
+      public static partial byte[] Crypto_Stream_ChaCha20_IETF_XOR(byte[] inputMessage, byte[] nonce, byte[] key);
 
       /// <summary>
       /// 
@@ -35,7 +35,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_stream_chacha20_ietf_xor.json"/>
       [JSImport("sodium.crypto_stream_chacha20_ietf_xor", "blazorSodium")]
-      public static partial byte[] Crypto_Stream_ChaCha20_IETF_XOR(string input_message, byte[] nonce, byte[] key);
+      public static partial byte[] Crypto_Stream_ChaCha20_IETF_XOR(string inputMessage, byte[] nonce, byte[] key);
 
       /// <summary>
       /// 
@@ -47,7 +47,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_stream_chacha20_ietf_xor_ic.json"/>
       [JSImport("sodium.crypto_stream_chacha20_ietf_xor_ic", "blazorSodium")]
-      public static partial byte[] Crypto_Stream_ChaCha20_IETF_XOR_IC(byte[] input_message, byte[] nonce, int nonce_increment, byte[] key);
+      public static partial byte[] Crypto_Stream_ChaCha20_IETF_XOR_IC(byte[] inputMessage, byte[] nonce, int nonceIncrement, byte[] key);
 
       /// <summary>
       /// 
@@ -59,7 +59,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_stream_chacha20_ietf_xor_ic.json"/>
       [JSImport("sodium.crypto_stream_chacha20_ietf_xor_ic", "blazorSodium")]
-      public static partial byte[] Crypto_Stream_ChaCha20_IETF_XOR_IC(string input_message, byte[] nonce, int nonce_increment, byte[] key);
+      public static partial byte[] Crypto_Stream_ChaCha20_IETF_XOR_IC(string inputMessage, byte[] nonce, int nonceIncrement, byte[] key);
 
 
       /// <summary>
@@ -79,7 +79,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_stream_chacha20_xor.json"/>
       [JSImport("sodium.crypto_stream_chacha20_xor", "blazorSodium")]
-      public static partial byte[] Crypto_Stream_ChaCha20_XOR(byte[] input_message, byte[] nonce, byte[] key);
+      public static partial byte[] Crypto_Stream_ChaCha20_XOR(byte[] inputMessage, byte[] nonce, byte[] key);
 
       /// <summary>
       /// 
@@ -90,7 +90,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_stream_chacha20_xor.json"/>
       [JSImport("sodium.crypto_stream_chacha20_xor", "blazorSodium")]
-      public static partial byte[] Crypto_Stream_ChaCha20_XOR(string input_message, byte[] nonce, byte[] key);
+      public static partial byte[] Crypto_Stream_ChaCha20_XOR(string inputMessage, byte[] nonce, byte[] key);
 
       /// <summary>
       /// 
@@ -102,7 +102,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_stream_chacha20_xor_ic.json"/>
       [JSImport("sodium.crypto_stream_chacha20_xor_ic", "blazorSodium")]
-      public static partial byte[] Crypto_Stream_ChaCha20_XOR_IC(byte[] input_message, byte[] nonce, int nonce_increment, byte[] key);
+      public static partial byte[] Crypto_Stream_ChaCha20_XOR_IC(byte[] inputMessage, byte[] nonce, int nonceIncrement, byte[] key);
 
       /// <summary>
       /// 
@@ -114,7 +114,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_stream_chacha20_xor_ic.json"/>
       [JSImport("sodium.crypto_stream_chacha20_xor_ic", "blazorSodium")]
-      public static partial byte[] Crypto_Stream_ChaCha20_XOR_IC(string input_message, byte[] nonce, int nonce_increment, byte[] key);
+      public static partial byte[] Crypto_Stream_ChaCha20_XOR_IC(string inputMessage, byte[] nonce, int nonceIncrement, byte[] key);
 
       /// <summary>
       /// 
@@ -133,7 +133,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_stream_xchacha20_xor.json"/>
       [JSImport("sodium.crypto_stream_xchacha20_xor", "blazorSodium")]
-      public static partial byte[] Crypto_Stream_XChaCha20_XOR(byte[] input_message, byte[] nonce, byte[] key);
+      public static partial byte[] Crypto_Stream_XChaCha20_XOR(byte[] inputMessage, byte[] nonce, byte[] key);
 
       /// <summary>
       /// 
@@ -144,7 +144,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_stream_xchacha20_xor.json"/>
       [JSImport("sodium.crypto_stream_xchacha20_xor", "blazorSodium")]
-      public static partial byte[] Crypto_Stream_XChaCha20_XOR(string input_message, byte[] nonce, byte[] key);
+      public static partial byte[] Crypto_Stream_XChaCha20_XOR(string inputMessage, byte[] nonce, byte[] key);
 
       /// <summary>
       /// 
@@ -156,7 +156,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_stream_xchacha20_xor_ic.json"/>
       [JSImport("sodium.crypto_stream_xchacha20_xor_ic", "blazorSodium")]
-      public static partial byte[] Crypto_Stream_XChaCha20_XOR_IC(byte[] input_message, byte[] nonce, int nonce_increment, byte[] key);
+      public static partial byte[] Crypto_Stream_XChaCha20_XOR_IC(byte[] inputMessage, byte[] nonce, int nonceIncrement, byte[] key);
 
       /// <summary>
       /// 
@@ -168,6 +168,6 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_stream_xchacha20_xor_ic.json"/>
       [JSImport("sodium.crypto_stream_xchacha20_xor_ic", "blazorSodium")]
-      public static partial byte[] Crypto_Stream_XChaCha20_XOR_IC(string input_message, byte[] nonce, int nonce_increment, byte[] key);
+      public static partial byte[] Crypto_Stream_XChaCha20_XOR_IC(string inputMessage, byte[] nonce, int nonceIncrement, byte[] key);
    }
 }
