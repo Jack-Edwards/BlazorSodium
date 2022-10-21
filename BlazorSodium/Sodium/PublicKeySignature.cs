@@ -74,16 +74,6 @@ namespace BlazorSodium.Sodium
          => Crypto_Sign_Final_Create_Internal(stateAddress.Value, privateKey);
 
       /// <summary>
-      /// Internal method.
-      /// </summary>
-      /// <param name="stateAddress"></param>
-      /// <param name="privateKey"></param>
-      /// <returns></returns>
-      /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_final_create.json"/>
-      [JSImport("sodium.crypto_sign_final_create", "blazorSodium")]
-      internal static partial byte[] Crypto_Sign_Final_Create_Internal([JSMarshalAs<JSType.Number>] long stateAddress, byte[] privateKey);
-
-      /// <summary>
       /// Verify the provided signature is valid for the message previously supplied using Crypto_Sign_Update().
       /// </summary>
       /// <param name="stateAddress"></param>
@@ -94,17 +84,6 @@ namespace BlazorSodium.Sodium
       [SupportedOSPlatform("browser")]
       public static bool Crypto_Sign_Final_Verify(StateAddress stateAddress, byte[] signature, byte[] publicKey)
          => Crypto_Sign_Final_Verify_Internal(stateAddress.Value, signature, publicKey);
-
-      /// <summary>
-      /// Internal method.
-      /// </summary>
-      /// <param name="stateAddress"></param>
-      /// <param name="signature"></param>
-      /// <param name="publicKey"></param>
-      /// <returns></returns>
-      /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_final_verify.json"/>
-      [JSImport("sodium.crypto_sign_final_verify", "blazorSodium")]
-      internal static partial bool Crypto_Sign_Final_Verify_Internal([JSMarshalAs<JSType.Number>] long stateAddress, byte[] signature, byte[] publicKey);
 
       /// <summary>
       /// Initialize the signature system for a multi-part message.
@@ -120,21 +99,6 @@ namespace BlazorSodium.Sodium
       }
 
       /// <summary>
-      /// Internal method.
-      /// </summary>
-      /// <returns></returns>
-      /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_init.json"/>
-      /// <remarks>
-      /// Switching the return type to 'long' and applying a [return: JSMarshalAs<JSType.Number>]
-      /// attribute does not work any better than simply returning an 'int'.
-      /// 
-      /// A 'System.Runtime.InteropServices.JavaScript.JSException' exception is thrown when
-      /// the return value reaches or exceeds 2,147,483,647. The exception message is '[object Object]'.
-      /// </remarks>
-      [JSImport("sodium.crypto_sign_init", "blazorSodium")]
-      internal static partial int Crypto_Sign_Init_Internal();
-
-      /// <summary>
       /// Randomly generate an Ed25519 key pair.
       /// </summary>
       /// <returns></returns>
@@ -145,14 +109,6 @@ namespace BlazorSodium.Sodium
          JSObject jsObject = Crypto_Sign_KeyPair_Internal();
          return Ed25519KeyPair.FromJavaScript(jsObject);
       }
-
-      /// <summary>
-      /// Internal method.
-      /// </summary>
-      /// <returns></returns>
-      /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_keypair.json"/>
-      [JSImport("sodium.crypto_sign_keypair", "blazorSodium")]
-      internal static partial JSObject Crypto_Sign_KeyPair_Internal();
 
       /// <summary>
       /// Verify the signed message has a valid signature for the provided public key.
@@ -178,15 +134,6 @@ namespace BlazorSodium.Sodium
       }
 
       /// <summary>
-      /// Internal method.
-      /// </summary>
-      /// <param name="seed"></param>
-      /// <returns></returns>
-      /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_seed_keypair.json"/>
-      [JSImport("sodium.crypto_sign_seed_keypair", "blazorSodium")]
-      internal static partial JSObject Crypto_Sign_Seed_KeyPair_Internal(byte[] seed);
-
-      /// <summary>
       /// Add a new chunk to the message that will eventually be signed.
       /// </summary>
       /// <param name="stateAddress"></param>
@@ -195,15 +142,6 @@ namespace BlazorSodium.Sodium
       [SupportedOSPlatform("browser")]
       public static void Crypto_Sign_Update(StateAddress stateAddress, byte[] messageChunk)
          => Crypto_Sign_Update_Internal(stateAddress.Value, messageChunk);
-
-      /// <summary>
-      /// Internal method.
-      /// </summary>
-      /// <param name="stateAddress"></param>
-      /// <param name="messageChunk"></param>
-      /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_update.json"/>
-      [JSImport("sodium.crypto_sign_update", "blazorSodium")]
-      internal static partial void Crypto_Sign_Update_Internal([JSMarshalAs<JSType.Number>] long stateAddress, byte[] messageChunk);
 
       /// <summary>
       /// Verify the signed message has a valid signature for the provided public key.
