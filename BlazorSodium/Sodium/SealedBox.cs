@@ -7,7 +7,7 @@ namespace BlazorSodium.Sodium
    public static partial class SealedBox
    {
       /// <summary>
-      /// 
+      /// Randomly generate an X25519 key pair.
       /// </summary>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_box_keypair.json"/>
@@ -19,7 +19,7 @@ namespace BlazorSodium.Sodium
       }
 
       /// <summary>
-      /// 
+      /// Internal method.
       /// </summary>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_box_keypair.json"/>
@@ -27,7 +27,7 @@ namespace BlazorSodium.Sodium
       internal static partial JSObject Crypto_Box_KeyPair_Internal();
 
       /// <summary>
-      /// 
+      /// Randomly generate a Curve25519 key pair.
       /// </summary>
       /// <returns></returns>
       /// <remarks>
@@ -43,7 +43,7 @@ namespace BlazorSodium.Sodium
       }
 
       /// <summary>
-      /// 
+      /// Internal method.
       /// </summary>
       /// <returns></returns>
       /// <remarks>
@@ -55,7 +55,7 @@ namespace BlazorSodium.Sodium
       internal static partial JSObject Crypto_Box_Curve25519XChaCha20Poly1305_KeyPair_Internal();
 
       /// <summary>
-      /// 
+      /// Derive an X25519 key pair from a seed.
       /// </summary>
       /// <param name="seed"></param>
       /// <returns></returns>
@@ -68,7 +68,7 @@ namespace BlazorSodium.Sodium
       }
 
       /// <summary>
-      /// 
+      /// Internal method.
       /// </summary>
       /// <param name="seed"></param>
       /// <returns></returns>
