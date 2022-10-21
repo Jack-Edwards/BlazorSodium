@@ -5,7 +5,7 @@ namespace BlazorSodium.Sodium
    public static partial class Sodium
    {
       /// <summary>
-      /// 
+      /// Get the current version of the underlying libsodium.js package.
       /// </summary>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/sodium_version_string.json"/>
