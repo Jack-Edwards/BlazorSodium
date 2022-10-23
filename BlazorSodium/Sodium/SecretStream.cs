@@ -76,6 +76,19 @@ namespace BlazorSodium.Sodium
          => Crypto_SecretStream_XChaCha20Poly1305_Push_Internal(stateAddress.Value, messageChunk, additionalData, tag);
 
       /// <summary>
+      /// Encrypts the provided messageChunk using the provided state, authentication tag, and optional additionalData.
+      /// </summary>
+      /// <param name="stateAddress"></param>
+      /// <param name="messageChunk"></param>
+      /// <param name="tag"></param>
+      /// <param name="additionalData">Optional</param>
+      /// <returns></returns>
+      /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_secretstream_xchacha20poly1305_push.json"/>
+      [SupportedOSPlatform("browser")]
+      public static byte[] Crypto_SecretStream_XChaCha20Poly1305_Push(StateAddress stateAddress, string messageChunk, uint tag = 0, byte[] additionalData = null)
+         => Crypto_SecretStream_XChaCha20Poly1305_Push_Internal(stateAddress.Value, messageChunk, additionalData, tag);
+
+      /// <summary>
       /// Explicitly rekey the stream at the provided state.
       /// </summary>
       /// <param name="stateAddress"></param>

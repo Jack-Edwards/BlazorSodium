@@ -79,8 +79,7 @@ namespace BlazorSodium.Demo.Shared
                ? SecretStream.TAG_MESSAGE
                : SecretStream.TAG_FINAL;
 
-            byte[] plaintextBytes = Encoding.UTF8.GetBytes(stringParts[i]);
-            byte[] cipherPart = SecretStream.Crypto_SecretStream_XChaCha20Poly1305_Push(initData.StateAddress, plaintextBytes, tag);
+            byte[] cipherPart = SecretStream.Crypto_SecretStream_XChaCha20Poly1305_Push(initData.StateAddress, stringParts[i], tag);
             cipherParts.Add(cipherPart);
          }
          HexCiphertext = Convert.ToHexString(cipherParts.SelectMany(x => x).ToArray());
