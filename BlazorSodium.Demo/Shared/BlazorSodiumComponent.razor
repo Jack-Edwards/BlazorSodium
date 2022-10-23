@@ -4,13 +4,6 @@
 <input type="text" style="width:500px;" @bind="SaltString" />
 <button type="submit" @onclick="GenerateRandomSalt">Click me to generate a random salt</button>
 
-<p>Plaintext password</p>
-<input type="text" @bind="Password" />
-<button type="submit" @onclick="GeneratePasswordHash">Click me to hash the provided password</button>
-
-<p>Argon hashed password</p>
-<input type="text" style="width:500px;" @bind="HashedPassword" />
-
 <p>Public key signature</p>
 <button type="submit" @onclick="GeneratePublicKeySignatureKeyPair">Click me to create a Public Key Signature key pair</button>
 
