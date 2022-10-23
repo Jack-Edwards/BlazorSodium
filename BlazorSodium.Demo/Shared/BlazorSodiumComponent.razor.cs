@@ -37,27 +37,6 @@ namespace BlazorSodium.Demo.Shared
          SaltString = Convert.ToHexString(Salt);
       }
 
-      protected string Password { get; set; }
-      protected string HashedPassword { get; set; }
-
-      [SupportedOSPlatform("browser")]
-      protected void GeneratePasswordHash()
-      {
-         if (Password is not null && Salt is not null)
-         {
-            byte[] passwordBytes = Encoding.UTF8.GetBytes(Password);
-            byte[] passwordHash = PasswordHash.ArgonHashBinary(
-               outputLength: 32,
-               password: passwordBytes,
-               salt: Salt,
-               opsLimit: PasswordHash.OPSLIMIT_INTERACTIVE,
-               memoryLimit: PasswordHash.MEMLIMIT_INTERACTIVE,
-               algorithm: PasswordHash.crypto_pwhash_argon2i_ALG_ARGON2I13);
-
-            HashedPassword = Convert.ToHexString(passwordHash);
-         }
-      }
-
       protected string PublicKey { get; set; }
       protected string PrivateKey { get; set; }
 
