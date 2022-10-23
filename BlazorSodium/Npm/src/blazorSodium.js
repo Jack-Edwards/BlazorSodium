@@ -8,3 +8,8 @@ export async function init() {
 
    console.log(`Sodium init: { version: ${sodium.sodium_version_string()}, wasm: ${usingWasm} }`);
 }
+
+export function getSodiumConstant(key) {
+   console.log(sodium);
+   return sodium[key];
+}
