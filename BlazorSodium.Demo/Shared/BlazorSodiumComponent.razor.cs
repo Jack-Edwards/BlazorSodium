@@ -3,6 +3,9 @@ using BlazorSodium.Sodium;
 using BlazorSodium.Sodium.Models;
 using Microsoft.AspNetCore.Components;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.JavaScript;
 using System.Runtime.Versioning;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,13 +20,6 @@ namespace BlazorSodium.Demo.Shared
       protected override async Task OnInitializedAsync()
       {
          await BlazorSodiumService.InitializeAsync();
-
-         /*
-         for (int i = 0; i < 100; i++)
-         {
-            GenerateRandomNumber();
-         }
-         */
       }
 
       private string SaltString { get; set; }
@@ -53,6 +49,52 @@ namespace BlazorSodium.Demo.Shared
       {
          uint randomNumber = RandomBytes.RandomBytes_Random();
          Console.WriteLine(randomNumber);
+      }
+
+      protected string SecretStreamKey { get; set; }
+      protected byte[] SecretStreamKeyBytes { get; set; }
+      [SupportedOSPlatform("browser")]
+      protected void GenerateSecretStreamKey()
+      {
+         uint keySize = SecretStream.KEY_BYTES;
+         SecretStreamKeyBytes = new byte[keySize];
+         SecretStream.Crypto_SecretStream_XChaCha20Poly1305_KeyGen().CopyTo(SecretStreamKeyBytes, 0);
+         SecretStreamKey = Convert.ToHexString(SecretStreamKeyBytes);
+      }
+
+      protected string SecretStreamPlaintext { get; set; }
+      protected string HexCiphertext { get; set; }
+      protected string DecryptedText { get; set; }
+      [SupportedOSPlatform("browser")]
+      protected void EncryptSecretStream()
+      {
+         // Encrypt
+         SecretStreamPushData initData = SecretStream.Crypto_SecretStream_XChaCha20Poly1305_Init_Push(SecretStreamKeyBytes);
+         string[] stringParts = SecretStreamPlaintext.Split(' ');
+         List<byte[]> cipherParts = new List<byte[]>(stringParts.Length);
+
+         for (int i = 0; i < stringParts.Length; i++)
+         {
+            uint tag = i + 1 < stringParts.Length
+               ? SecretStream.TAG_MESSAGE
+               : SecretStream.TAG_FINAL;
+
+            byte[] plaintextBytes = Encoding.UTF8.GetBytes(stringParts[i]);
+            byte[] cipherPart = SecretStream.Crypto_SecretStream_XChaCha20Poly1305_Push(initData.StateAddress, plaintextBytes, tag);
+            cipherParts.Add(cipherPart);
+         }
+         HexCiphertext = Convert.ToHexString(cipherParts.SelectMany(x => x).ToArray());
+         Console.WriteLine(HexCiphertext);
+
+         // Decrypt
+         StateAddress stateAddress = SecretStream.Crypto_SecretStream_XChaCha20Poly1305_Init_Pull(initData.Header, SecretStreamKeyBytes);
+         List<byte[]> plaintextParts = new List<byte[]>(cipherParts.Count);
+         for (int i = 0; i < cipherParts.Count; i++)
+         {
+            SecretStreamPullData pullData = SecretStream.Crypto_SecretStream_XChaCha20Poly1305_Pull(stateAddress, cipherParts[i], null);
+            plaintextParts.Add(pullData.Message);
+         }
+         DecryptedText = Encoding.UTF8.GetString(plaintextParts.SelectMany(x => x).ToArray());
       }
    }
 }

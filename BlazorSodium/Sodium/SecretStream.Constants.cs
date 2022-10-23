@@ -16,12 +16,6 @@
       {
          get => (uint)Sodium.GetConstantNumber("crypto_secretstream_xchacha20poly1305_KEYBYTES");
       }
-
-      public static uint KEY_BYTES
-      {
-         get => (uint)Sodium.GetConstantNumber("crypto_secretstream_xchacha20poly1305_KEYBYTES");
-      }
-
       public static uint TAG_FINAL
       {
          get => (uint)Sodium.GetConstantNumber("crypto_secretstream_xchacha20poly1305_TAG_FINAL");
