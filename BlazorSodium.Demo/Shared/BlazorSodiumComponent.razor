@@ -1,14 +1,40 @@
 ﻿<h3>BlazorSodiumComponent</h3>
 
-<p>Argon Salt:</p>
-<input type="text" style="width:500px;" @bind="SaltString" />
-<button type="submit" @onclick="GenerateRandomSalt">Click me to generate a random salt</button>
+<h4>Random</h4>
+<div>
+   <input type="text" style="width:500px;" @bind="SaltString" />
+   <button type="submit" @onclick="GenerateRandomSalt">Generate a random value</button>
+</div>
 
-<p>Public key signature</p>
-<button type="submit" @onclick="GeneratePublicKeySignatureKeyPair">Click me to create a Public Key Signature key pair</button>
+<h4>Public key signature</h4>
+<div>
+   <button type="submit" @onclick="GeneratePublicKeySignatureKeyPair">Create a Public Key Signature key pair</button>
 
-<p>Public key</p>
-<input type="text" style="width:500px;" @bind="PublicKey" />
+   <label>Public key</label>
+   <input type="text" style="width:500px;" @bind="PublicKey" />
 
-<p>Private key</p>
-<input type="text" style="width:500px;" @bind="PrivateKey" />
+   <label>Private key</label>
+   <input type="text" style="width:500px;" @bind="PrivateKey" />
+</div>
+
+<h4>SecretStream Key</h4>
+<div>
+   <input type="text" style="width:500px;" @bind="SecretStreamKey" />
+   <button type="submit" @onclick="GenerateSecretStreamKey">Generate a secret key</button>
+
+   <br />
+
+   <label>Provide some plaintext (spaces count as chunk separators)</label>
+   <input type="text" style="width:500px;" @bind="SecretStreamPlaintext" />
+   <button type="submit" @onclick="EncryptSecretStream">Encrypt/Decrypt</button>
+
+   <br />
+
+   <label>Encrypted</label>
+   <input type="text" style="width:500px;" @bind="HexCiphertext" />
+
+   <br />
+
+   <label>Decrypted</label>
+   <input type="text" style="width:500px;" @bind="DecryptedText" />
+</div>

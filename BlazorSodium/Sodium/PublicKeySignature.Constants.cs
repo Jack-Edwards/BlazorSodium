@@ -1,6 +1,6 @@
 ﻿namespace BlazorSodium.Sodium
 {
-   public partial static class PublicKeySignature
+   public static partial class PublicKeySignature
    {
       public static uint SIGN_BYTES
       {
