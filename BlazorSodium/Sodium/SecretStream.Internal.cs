@@ -50,6 +50,18 @@ namespace BlazorSodium.Sodium
       /// Internal method.
       /// </summary>
       /// <param name="stateAddress"></param>
+      /// <param name="messageChunk"></param>
+      /// <param name="additionalData">Optional</param>
+      /// <param name="tag"></param>
+      /// <returns></returns>
+      /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_secretstream_xchacha20poly1305_push.json"/>
+      [JSImport("sodium.crypto_secretstream_xchacha20poly1305_push", "blazorSodium")]
+      internal static partial byte[] Crypto_SecretStream_XChaCha20Poly1305_Push_Internal([JSMarshalAsAttribute<JSType.Number>] long stateAddress, string messageChunk, byte[] additionalData, [JSMarshalAsAttribute<JSType.Number>] long tag);
+
+      /// <summary>
+      /// Internal method.
+      /// </summary>
+      /// <param name="stateAddress"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_secretstream_xchacha20poly1305_rekey.json"/>
       [JSImport("sodium.crypto_secretstream_xchacha20poly1305_rekey", "blazorSodium")]
