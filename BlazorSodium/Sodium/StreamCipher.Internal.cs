@@ -2,6 +2,7 @@
 
 namespace BlazorSodium.Sodium
 {
+   /* Missing from the sodium module
    public static partial class StreamCipher
    {
       /// <summary>
@@ -87,4 +88,5 @@ namespace BlazorSodium.Sodium
       [JSImport("sodium.crypto_stream_xchacha20_xor_ic", "blazorSodium")]
       internal static partial byte[] Crypto_Stream_XChaCha20_XOR_IC_Internal(string inputMessage, byte[] nonce, [JSMarshalAs<JSType.Number>] long nonceIncrement, byte[] key);
    }
+   */
 }

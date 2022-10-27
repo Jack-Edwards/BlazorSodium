@@ -8,14 +8,6 @@ namespace BlazorSodium.Sodium
    public static partial class SecretBox
    {
       /// <summary>
-      /// Randomly generate a key suitable for SecretBox encryption.
-      /// </summary>
-      /// <returns></returns>
-      /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_secretbox_keygen.json"/>
-      [JSImport("sodium.crypto_secretbox_keygen", "blazorSodium")]
-      public static partial byte[] Crypto_SecretBox_KeyGen();
-
-      /// <summary>
       /// Encrypt a message using the provided key and nonce.
       /// </summary>
       /// <param name="message"></param>
@@ -68,6 +60,14 @@ namespace BlazorSodium.Sodium
       [SupportedOSPlatform("browser")]
       public static byte[] Crypto_SecretBox_Easy(string message, byte[] key, byte[] nonce)
          => Crypto_SecretBox_Easy_Internal(message, nonce, key);
+
+      /// <summary>
+      /// Randomly generate a key suitable for SecretBox encryption.
+      /// </summary>
+      /// <returns></returns>
+      /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_secretbox_keygen.json"/>
+      [JSImport("sodium.crypto_secretbox_keygen", "blazorSodium")]
+      public static partial byte[] Crypto_SecretBox_KeyGen();
 
       /// <summary>
       /// Verifies and decrypts the provided detached box using the provided key and nonce.

@@ -12,3 +12,7 @@ export async function init() {
 export function getSodiumConstant(key) {
    return sodium[key];
 }
+
+export function printSodium() {
+   console.log(sodium);
+}

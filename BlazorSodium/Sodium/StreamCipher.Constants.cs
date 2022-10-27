@@ -1,5 +1,6 @@
 ﻿namespace BlazorSodium.Sodium
 {
+   /* Missing from the sodium module
    public static partial class StreamCipher
    {
       public static uint CHACHA20_KEY_BYTES
@@ -32,4 +33,5 @@
          get => (uint)Sodium.GetConstantNumber("crypto_stream_xchacha20_NONCEBYTES");
       }
    }
+   */
 }

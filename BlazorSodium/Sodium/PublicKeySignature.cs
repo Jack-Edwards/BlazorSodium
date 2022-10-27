@@ -44,6 +44,7 @@ namespace BlazorSodium.Sodium
       [JSImport("sodium.crypto_sign_ed25519_sk_to_curve25519", "blazorSodium")]
       public static partial byte[] Crypto_Sign_Ed25519_SK_To_Curve25519(byte[] privateKey);
 
+      /* Missing from the sodium module
       /// <summary>
       /// Extract the public key from an Ed25519 private key.
       /// </summary>
@@ -52,7 +53,9 @@ namespace BlazorSodium.Sodium
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_ed25519_sk_to_pk.json"/>
       [JSImport("sodium.crypto_sign_ed25519_sk_to_pk", "blazorSodium")]
       public static partial byte[] Crypto_Sign_Ed25519_SK_To_PK(byte[] privateKey);
+      */
 
+      /* Missing from the sodium module
       /// <summary>
       /// Extract the seed from an Ed25519 private key.
       /// </summary>
@@ -61,6 +64,7 @@ namespace BlazorSodium.Sodium
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_ed25519_sk_to_seed.json"/>
       [JSImport("sodium.crypto_sign_ed25519_sk_to_seed", "blazorSodium")]
       public static partial byte[] Crypto_Sign_Ed25519_SK_To_Seed(byte[] privateKey);
+      */
 
       /// <summary>
       /// Compute a signature for the message previously supplied using Crypto_Sign_Update().

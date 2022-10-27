@@ -3,6 +3,7 @@ using System.Runtime.Versioning;
 
 namespace BlazorSodium.Sodium
 {
+   /* Missing from the sodium module
    public static partial class StreamCipher
    {
       /// <summary>
@@ -177,4 +178,5 @@ namespace BlazorSodium.Sodium
       public static byte[] Crypto_Stream_XChaCha20_XOR_IC(string inputMessage, byte[] nonce, uint nonceIncrement, byte[] key)
          => Crypto_Stream_XChaCha20_XOR_IC_Internal(inputMessage, nonce, nonceIncrement, key);
    }
+   */
 }

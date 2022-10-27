@@ -18,6 +18,7 @@ namespace BlazorSodium.Sodium
          return X25519KeyPair.FromJavaScript(jsObject);
       }
 
+      /* Missing from the sodium module
       /// <summary>
       /// Randomly generate a Curve25519 key pair.
       /// </summary>
@@ -33,6 +34,7 @@ namespace BlazorSodium.Sodium
          JSObject jsObject = Crypto_Box_Curve25519XChaCha20Poly1305_KeyPair_Internal();
          return Curve25519KeyPair.FromJavaScript(jsObject);
       }
+      */
 
       /// <summary>
       /// Derive an X25519 key pair from a seed.
