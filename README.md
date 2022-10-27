@@ -1,9 +1,8 @@
 # BlazorSodium
 
-BlazorSodium is a simple wrapper for over [libsodium.js](https://github.com/jedisct1/libsodium.js/) to use in Blazor WASM projects.
+BlazorSodium is a simple wrapper over [libsodium.js](https://github.com/jedisct1/libsodium.js/) to use in Blazor WASM projects.
 
 This is not compatible with Blazor Server.
-Do not ask for Blazor Server support.  There are other NuGet packages available that should already work fine for Blazor Server.
 
 ## Setup
 
