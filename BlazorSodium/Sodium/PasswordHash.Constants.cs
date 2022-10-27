@@ -1,6 +1,6 @@
 ﻿namespace BlazorSodium.Sodium
 {
-   public partial class PasswordHash
+   public static partial class PasswordHash
    {
       public static uint ALG_ARGON2I13
       {
