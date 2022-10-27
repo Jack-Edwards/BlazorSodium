@@ -20,6 +20,7 @@ namespace BlazorSodium.Demo.Shared
       protected override async Task OnInitializedAsync()
       {
          await BlazorSodiumService.InitializeAsync();
+         Sodium.Sodium.PrintSodium();
       }
 
       private string SaltString { get; set; }

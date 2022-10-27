@@ -12,6 +12,7 @@ namespace BlazorSodium.Sodium
       [JSImport("sodium.crypto_box_keypair", "blazorSodium")]
       internal static partial JSObject Crypto_Box_KeyPair_Internal();
 
+      /* Missing from the sodium module
       /// <summary>
       /// Internal method.
       /// </summary>
@@ -23,6 +24,7 @@ namespace BlazorSodium.Sodium
       /// <seealso cref="https://github.com/jedisct1/libsodium/discussions/1101"/>
       [JSImport("sodium.crypto_box_curve25519xchacha20poly1305_keypair", "blazorSodium")]
       internal static partial JSObject Crypto_Box_Curve25519XChaCha20Poly1305_KeyPair_Internal();
+      */
 
       /// <summary>
       /// Internal method.
