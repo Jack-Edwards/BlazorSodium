@@ -3,7 +3,7 @@ using System.Runtime.Versioning;
 
 namespace BlazorSodium.Sodium
 {
-   public partial class PasswordHash
+   public static partial class PasswordHash
    {
       /// <summary>
       /// Derive a key from the provided password and hashing parameters.
@@ -16,6 +16,7 @@ namespace BlazorSodium.Sodium
       /// <param name="algorithm"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_pwhash.json"/>
+      [SupportedOSPlatform("browser")]
       public static byte[] Crypto_PwHash(uint keyLength, byte[] password, byte[] salt, uint opsLimit, uint memLimit, uint algorithm)
          => Crypto_PwHash_Internal(keyLength, password, salt, opsLimit, memLimit, algorithm);
 
@@ -30,6 +31,7 @@ namespace BlazorSodium.Sodium
       /// <param name="algorithm"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_pwhash.json"/>
+      [SupportedOSPlatform("browser")]
       public static byte[] Crypto_PwHash(uint keyLength, string password, byte[] salt, uint opsLimit, uint memLimit, uint algorithm)
          => Crypto_PwHash_Internal(keyLength, password, salt, opsLimit, memLimit, algorithm);
 
@@ -63,6 +65,7 @@ namespace BlazorSodium.Sodium
       /// <param name="memLimit"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_pwhash_str.json"/>
+      [SupportedOSPlatform("browser")]
       public static string Crypto_PwHash_Str(string password, uint opsLimit, uint memLimit)
          => Crypto_PwHash_Str_Internal(password, opsLimit, memLimit);
 
@@ -75,6 +78,7 @@ namespace BlazorSodium.Sodium
       /// <param name="memLimit"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_pwhash_str_needs_rehash.json"/>
+      [SupportedOSPlatform("browser")]
       public static bool Crypto_PwHash_Str_Needs_Rehash(string hashedPassword, uint opsLimit, uint memLimit)
          => Crypto_PwHash_Str_Needs_Rehash_Internal(hashedPassword, opsLimit, memLimit);
 
@@ -85,6 +89,7 @@ namespace BlazorSodium.Sodium
       /// <param name="password"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_pwhash_str_verify.json"/>
+      [SupportedOSPlatform("browser")]
       public static bool Crypto_PwHash_Str_Verify(string hashedPassword, string password)
          => Crypto_PwHash_Str_Verify_Internal(hashedPassword, password);
    }
