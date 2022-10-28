@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices.JavaScript;
+using System.Runtime.Versioning;
 
 namespace BlazorSodium.Sodium
 {
@@ -13,6 +14,7 @@ namespace BlazorSodium.Sodium
       /// <param name="key"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_kdf_derive_from_key.json"/>
+      [SupportedOSPlatform("browser")]
       public static byte[] KDF_Derive_From_Key(uint subkeyLength, uint subkeyId, string context, byte[] key)
          => KDF_Derive_From_Key_Internal(subkeyLength, subkeyId, context, key);
 
@@ -25,6 +27,7 @@ namespace BlazorSodium.Sodium
       /// <param name="key"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_kdf_derive_from_key.json"/>
+      [SupportedOSPlatform("browser")]
       public static byte[] KDF_Derive_From_Key(uint subkeyLength, uint subkeyId, string context, string key)
          => KDF_Derive_From_Key_Internal(subkeyLength, subkeyId, context, key);
 
