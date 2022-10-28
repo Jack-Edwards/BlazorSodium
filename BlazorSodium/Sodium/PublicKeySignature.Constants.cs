@@ -2,7 +2,7 @@
 {
    public static partial class PublicKeySignature
    {
-      public static uint SIGN_BYTES
+      public static uint BYTES
       {
          get => (uint)Sodium.GetConstantNumber("crypto_sign_BYTES");
       }

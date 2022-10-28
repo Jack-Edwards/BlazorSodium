@@ -22,20 +22,23 @@ namespace BlazorSodium.Demo.Shared
          await BlazorSodiumService.InitializeAsync();
          Sodium.Sodium.PrintSodium();
 
-         string password = "my test password";
-         uint interactiveOpsLimit = PasswordHash.OPSLIMIT_INTERACTIVE;
-         uint interactiveMemLimit = PasswordHash.MEMLIMIT_INTERACTIVE;
-         string hashedPassword = PasswordHash.Crypto_PwHash_Str(password, interactiveOpsLimit, interactiveMemLimit);
-         Console.WriteLine($"Hashed password: {hashedPassword}");
+         if (OperatingSystem.IsBrowser())
+         {
+            string password = "my test password";
+            uint interactiveOpsLimit = PasswordHash.OPSLIMIT_INTERACTIVE;
+            uint interactiveMemLimit = PasswordHash.MEMLIMIT_INTERACTIVE;
+            string hashedPassword = PasswordHash.Crypto_PwHash_Str(password, interactiveOpsLimit, interactiveMemLimit);
+            Console.WriteLine($"Hashed password: {hashedPassword}");
 
-         bool needsRehash = PasswordHash.Crypto_PwHash_Str_Needs_Rehash(hashedPassword, interactiveOpsLimit, interactiveMemLimit);
-         Console.WriteLine($"Password needs rehash: {needsRehash}");
+            bool needsRehash = PasswordHash.Crypto_PwHash_Str_Needs_Rehash(hashedPassword, interactiveOpsLimit, interactiveMemLimit);
+            Console.WriteLine($"Password needs rehash: {needsRehash}");
 
-         bool invalidVerification = PasswordHash.Crypto_PwHash_Str_Verify(hashedPassword, "bad password");
-         Console.WriteLine($"Bad password is caught: {!invalidVerification}");
+            bool invalidVerification = PasswordHash.Crypto_PwHash_Str_Verify(hashedPassword, "bad password");
+            Console.WriteLine($"Bad password is caught: {!invalidVerification}");
 
-         bool validVerification = PasswordHash.Crypto_PwHash_Str_Verify(hashedPassword, password);
-         Console.WriteLine($"Good password is accepted: {validVerification}");
+            bool validVerification = PasswordHash.Crypto_PwHash_Str_Verify(hashedPassword, password);
+            Console.WriteLine($"Good password is accepted: {validVerification}");
+         }
       }
 
       private string SaltString { get; set; }

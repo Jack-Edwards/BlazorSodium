@@ -7,7 +7,7 @@
          get => (uint)Sodium.GetConstantNumber("crypto_scalarmult_BYTES");
       }
 
-      public static uint SCALARBYTES
+      public static uint SCALAR_BYTES
       {
          get => (uint)Sodium.GetConstantNumber("crypto_scalarmult_SCALARBYTES");
       }
