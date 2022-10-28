@@ -12,12 +12,12 @@
          get => (uint)Sodium.GetConstantNumber("crypto_kdf_BYTES_MIN");
       }
 
-      public static uint CONTEXTBYTES
+      public static uint CONTEXT_BYTES
       {
          get => (uint)Sodium.GetConstantNumber("crypto_kdf_CONTEXTBYTES");
       }
 
-      public static uint KEYBYTES
+      public static uint KEY_BYTES
       {
          get => (uint)Sodium.GetConstantNumber("crypto_kdf_KEYBYTES");
       }

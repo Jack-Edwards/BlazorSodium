@@ -2,12 +2,12 @@
 {
    public static partial class ShortHash
    {
-      public static uint SHORTHASH_BYTES
+      public static uint BYTES
       {
          get => (uint)Sodium.GetConstantNumber("crypto_shorthash_BYTES");
       }
 
-      public static uint SHORTHASH_KEY_BYTES
+      public static uint KEY_BYTES
       {
          get => (uint)Sodium.GetConstantNumber("crypto_shorthash_KEYBYTES");
       }

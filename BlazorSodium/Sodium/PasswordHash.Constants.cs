@@ -95,17 +95,17 @@
          get => (uint)Sodium.GetConstantNumber("crypto_pwhash_PASSWD_MIN");
       }
 
-      public static uint SALTBYTES
+      public static uint SALT_BYTES
       {
          get => (uint)Sodium.GetConstantNumber("crypto_pwhash_SALTBYTES");
       }
 
-      public static uint STRBYTES
+      public static uint STR_BYTES
       {
          get => (uint)Sodium.GetConstantNumber("crypto_pwhash_STRBYTES");
       }
 
-      public static string STRPREFIX
+      public static string STR_PREFIX
       {
          get => Sodium.GetConstantString("crypto_pwhash_STRPREFIX");
       }
