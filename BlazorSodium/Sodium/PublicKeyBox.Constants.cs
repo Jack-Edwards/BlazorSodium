@@ -1,6 +1,6 @@
 ﻿namespace BlazorSodium.Sodium
 {
-   public static partial class AuthenticatedEncryption
+   public static partial class PublicKeyBox
    {
       public static uint BEFORE_NM_BYTES
       {
