@@ -16,8 +16,8 @@
       <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
       <IncludeSymbols>True</IncludeSymbols>
       <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-      <Version>0.1.13-alpha</Version>
-      <PackageVersion>0.1.13-alpha</PackageVersion>
+      <Version>0.1.14-alpha</Version>
+      <PackageVersion>0.1.14-alpha</PackageVersion>
    </PropertyGroup>
 
    <ItemGroup>
