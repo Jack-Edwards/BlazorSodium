@@ -39,6 +39,11 @@ namespace BlazorSodium.Demo.Shared
             bool validVerification = PasswordHash.Crypto_PwHash_Str_Verify(hashedPassword, password);
             Console.WriteLine($"Good password is accepted: {validVerification}");
          }
+
+         if (OperatingSystem.IsBrowser())
+         {
+            GenericHash.Crypto_GenericHash_Init(GenericHash.BYTES);
+         }
       }
 
       private string SaltString { get; set; }
