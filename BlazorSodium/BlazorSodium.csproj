@@ -16,8 +16,8 @@
       <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
       <IncludeSymbols>True</IncludeSymbols>
       <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-      <Version>0.1.0-beta</Version>
-      <PackageVersion>0.1.0-beta</PackageVersion>
+      <Version>0.2.0-beta</Version>
+      <PackageVersion>0.2.0-beta</PackageVersion>
    </PropertyGroup>
 
    <ItemGroup>
