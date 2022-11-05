@@ -22,6 +22,7 @@ namespace BlazorSodium.Demo.Shared
          await BlazorSodiumService.InitializeAsync();
          Sodium.Sodium.PrintSodium();
 
+         /*
          if (OperatingSystem.IsBrowser())
          {
             string password = "my test password";
@@ -44,6 +45,35 @@ namespace BlazorSodium.Demo.Shared
          {
             GenericHash.Crypto_GenericHash_Init(GenericHash.BYTES);
          }
+         */
+
+         // short hash test
+         Sodium.ShortHash.Crypto_ShortHash_Malloc_Test();
+
+         byte[] key = Sodium.ShortHash.Crypto_ShortHash_KeyGen();
+         byte[] message = Encoding.UTF8.GetBytes("test");
+
+         byte[] hashBuffer = new byte[Sodium.ShortHash.BYTES];
+         Sodium.ShortHash.Crypto_ShortHash_Test_Pointers(hashBuffer, message, key);
+         Console.WriteLine(Convert.ToHexString(hashBuffer));
+
+         DateTime startTwo = DateTime.Now;
+         for (int i = 0; i < 100_000; i++)
+         {
+            byte[] hash = new byte[Sodium.ShortHash.BYTES];
+            Sodium.ShortHash.Crypto_ShortHash_Test(hash, message, key);
+         }
+         DateTime endTwo = DateTime.Now;
+
+         Console.WriteLine($"{endTwo.Ticks - startTwo.Ticks}");
+
+         DateTime start = DateTime.Now;
+         for(int i = 0; i < 100_000; i++)
+         {
+            byte[] hash = Sodium.ShortHash.Crypto_ShortHash(message, key);
+         }
+         DateTime end = DateTime.Now;
+         Console.WriteLine($"{end.Ticks - start.Ticks}");
       }
 
       private string SaltString { get; set; }

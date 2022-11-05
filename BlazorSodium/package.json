@@ -18,7 +18,9 @@
    "dependencies": {
       "buffer": "^6.0.3",
       "crypto-browserify": "^3.12.0",
+      "libsodium-sumo": "^0.7.10",
       "libsodium-wrappers": "^0.7.10",
+      "libsodium-wrappers-sumo": "^0.7.10",
       "stream-browserify": "^3.0.0"
    }
 }
