@@ -70,6 +70,12 @@ namespace BlazorSodium.Sodium
       [JSImport("cryptoShortHashPointers", "blazorSodium")]
       internal static partial int Crypto_ShortHash_Test_Internal(int hashAddress, int messageAddress, int messageLength, int something, int keyAddress);
 
+      [JSImport("cryptoShortHashMemoryView", "blazorSodium")]
+      public static partial void Crypto_ShortHash_MemoryView_Test([JSMarshalAs<JSType.MemoryView>] ArraySegment<byte> hashBuffer, [JSMarshalAs<JSType.MemoryView>] Span<byte> messageBuffer, [JSMarshalAs<JSType.MemoryView>] Span<byte> keyBuffer);
+
+      [JSImport("cryptoShortHashMemoryView_2", "blazorSodium")]
+      public static partial void Crypto_ShortHash_MemoryView_Test_2([JSMarshalAs<JSType.MemoryView>] ArraySegment<byte> hashBuffer, byte[] message, byte[] key);
+
       /// <summary>
       /// Randomly generate a key suitable for short hashing.
       /// </summary>

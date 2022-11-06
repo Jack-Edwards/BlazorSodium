@@ -30,6 +30,14 @@ export function cryptoShortHashPointers(hashAddress, messageAddress, messageLeng
    return libsodium._crypto_shorthash(hashAddress, messageAddress, messageLength, something, keyAddress);
 }
 
-export function cryptoShortHash(hashBuffer, messageBuffer, keyBuffer) {
+export function cryptoShortHashMemoryView(hashBuffer, messageBuffer, keyBuffer) {
    hashBuffer.set(sodium.crypto_shorthash(messageBuffer.slice(), keyBuffer.slice()));
+}
+
+export function cryptoShortHashMemoryView_2(hashBuffer, message, key) {
+   hashBuffer.set(sodium.crypto_shorthash(message, key));
+}
+
+export function randomBytes_MemoryViewTest(size, buffer) {
+   buffer.set(sodium.randombytes_buf(size));
 }

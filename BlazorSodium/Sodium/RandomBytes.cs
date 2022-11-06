@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices.JavaScript;
+﻿using System;
+using System.Runtime.InteropServices.JavaScript;
 using System.Runtime.Versioning;
 
 namespace BlazorSodium.Sodium
@@ -14,6 +15,9 @@ namespace BlazorSodium.Sodium
       [SupportedOSPlatform("browser")]
       public static byte[] RandomBytes_Buf(uint size)
          => RandomBytes_Buf_Internal(size);
+
+      [JSImport("randomBytes_MemoryViewTest", "blazorSodium")]
+      public static partial void RandomBytes_Buf_MemoryView_Test(int size, [JSMarshalAs<JSType.MemoryView>] ArraySegment<byte> buffer);
 
       /// <summary>
       /// Generate a deterministic sequence of bytes of the provided size with the provided seed.

@@ -3,6 +3,7 @@ using BlazorSodium.Sodium;
 using BlazorSodium.Sodium.Models;
 using Microsoft.AspNetCore.Components;
 using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.JavaScript;
@@ -21,61 +22,76 @@ namespace BlazorSodium.Demo.Shared
       {
          await BlazorSodiumService.InitializeAsync();
          Sodium.Sodium.PrintSodium();
+         ShortHashMemoryViewTest();
+      }
 
-         /*
-         if (OperatingSystem.IsBrowser())
+      protected void RandomBytesMemoryViewTest()
+      {
+         int size = 500_000;
+         int iterations = 50;
+
+         DateTime start2 = DateTime.Now;
+         for (int i = 0; i < iterations; i++)
          {
-            string password = "my test password";
-            uint interactiveOpsLimit = PasswordHash.OPSLIMIT_INTERACTIVE;
-            uint interactiveMemLimit = PasswordHash.MEMLIMIT_INTERACTIVE;
-            string hashedPassword = PasswordHash.Crypto_PwHash_Str(password, interactiveOpsLimit, interactiveMemLimit);
-            Console.WriteLine($"Hashed password: {hashedPassword}");
+            byte[] bytes = Sodium.RandomBytes.RandomBytes_Buf((uint)size);
+         }
+         DateTime end2 = DateTime.Now;
+         Console.WriteLine($"Baseline - {end2.Ticks - start2.Ticks}");
 
-            bool needsRehash = PasswordHash.Crypto_PwHash_Str_Needs_Rehash(hashedPassword, interactiveOpsLimit, interactiveMemLimit);
-            Console.WriteLine($"Password needs rehash: {needsRehash}");
-
-            bool invalidVerification = PasswordHash.Crypto_PwHash_Str_Verify(hashedPassword, "bad password");
-            Console.WriteLine($"Bad password is caught: {!invalidVerification}");
-
-            bool validVerification = PasswordHash.Crypto_PwHash_Str_Verify(hashedPassword, password);
-            Console.WriteLine($"Good password is accepted: {validVerification}");
+         DateTime start1 = DateTime.Now;
+         byte[] buffer = new byte[size];
+         ArraySegment<byte> arraySegment = new ArraySegment<byte>(buffer);
+         for (int i = 0; i < iterations; i++)
+         {
+            Sodium.RandomBytes.RandomBytes_Buf_MemoryView_Test(size, arraySegment);
          }
 
-         if (OperatingSystem.IsBrowser())
-         {
-            GenericHash.Crypto_GenericHash_Init(GenericHash.BYTES);
-         }
-         */
+         DateTime end1 = DateTime.Now;
+         Console.WriteLine($"MemoryView_Test - {end1.Ticks - start1.Ticks}");
+      }
 
-         // short hash test
-         Sodium.ShortHash.Crypto_ShortHash_Malloc_Test();
+      protected void ShortHashMemoryViewTest()
+      {
+         int iterations = 100_000;
 
+         // Another short hash test
          byte[] key = Sodium.ShortHash.Crypto_ShortHash_KeyGen();
-         byte[] message = Encoding.UTF8.GetBytes("test");
+         byte[] message = Enumerable.Repeat((byte)0xb4, 500_000).ToArray();
 
+         DateTime start1 = DateTime.Now;
          byte[] hashBuffer = new byte[Sodium.ShortHash.BYTES];
-         Sodium.ShortHash.Crypto_ShortHash_Test_Pointers(hashBuffer, message, key);
-         Console.WriteLine(Convert.ToHexString(hashBuffer));
+         ArraySegment<byte> hashArraySegment = new ArraySegment<byte>(hashBuffer);
 
-         DateTime startTwo = DateTime.Now;
-         for (int i = 0; i < 100_000; i++)
+         Span<byte> messageSpan = new Span<byte>(message);
+         Span<byte> keySpan = new Span<byte>(key);
+         for (int i = 0; i < iterations; i++)
          {
-            byte[] hash = new byte[Sodium.ShortHash.BYTES];
-            Sodium.ShortHash.Crypto_ShortHash_Test(hash, message, key);
+            Sodium.ShortHash.Crypto_ShortHash_MemoryView_Test(hashArraySegment, messageSpan, keySpan);
          }
-         DateTime endTwo = DateTime.Now;
+         DateTime end1 = DateTime.Now;
+         Console.WriteLine($"Crypto_ShortHash_MemoryView_Test - {end1.Ticks - start1.Ticks}");
 
-         Console.WriteLine($"{endTwo.Ticks - startTwo.Ticks}");
-
-         DateTime start = DateTime.Now;
-         for(int i = 0; i < 100_000; i++)
+         // Another short hash test
+         DateTime start2 = DateTime.Now;
+         for (int i = 0; i < iterations; i++)
          {
             byte[] hash = Sodium.ShortHash.Crypto_ShortHash(message, key);
          }
-         DateTime end = DateTime.Now;
-         Console.WriteLine($"{end.Ticks - start.Ticks}");
-      }
+         DateTime end2 = DateTime.Now;
+         Console.WriteLine($"Crypto_ShortHash - {end2.Ticks - start2.Ticks}");
 
+         // MemoryView and byte[]
+         DateTime start3 = DateTime.Now;
+         byte[] hashBuffer2 = new byte[Sodium.ShortHash.BYTES];
+         ArraySegment<byte> hashArraySegment2 = new ArraySegment<byte>(hashBuffer2);
+
+         for (int i = 0; i < iterations; i++)
+         {
+            Sodium.ShortHash.Crypto_ShortHash_MemoryView_Test_2(hashArraySegment2, message, key);
+         }
+         DateTime end3 = DateTime.Now;
+         Console.WriteLine($"Crypto_ShortHash_MemoryView_Test_2 - {end3.Ticks - start3.Ticks}");
+      }
       private string SaltString { get; set; }
       protected byte[] Salt { get; set; }
 
