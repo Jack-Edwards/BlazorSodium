@@ -4,17 +4,17 @@
    {
       public static uint PUBLIC_KEY_BYTES
       {
-         get => (uint)Sodium.GetConstantNumber("crypto_box_PUBLICKEYBYTES");
+         get => (uint)Sodium.GetConstantNumber_Interop("crypto_box_PUBLICKEYBYTES");
       }
 
       public static uint PRIVATE_KEY_BYTES
       {
-         get => (uint)Sodium.GetConstantNumber("crypto_box_SECRETKEYBYTES");
+         get => (uint)Sodium.GetConstantNumber_Interop("crypto_box_SECRETKEYBYTES");
       }
 
       public static uint SEAL_BYTES
       {
-         get => (uint)Sodium.GetConstantNumber("crypto_box_SEALBYTES");
+         get => (uint)Sodium.GetConstantNumber_Interop("crypto_box_SEALBYTES");
       }
    }
 }

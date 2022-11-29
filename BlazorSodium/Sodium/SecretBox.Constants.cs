@@ -4,12 +4,12 @@
    {
       public static uint KEY_BYTES
       {
-         get => (uint)Sodium.GetConstantNumber("crypto_secretbox_KEYBYTES");
+         get => (uint)Sodium.GetConstantNumber_Interop("crypto_secretbox_KEYBYTES");
       }
 
       public static uint MAC_BYTES
       {
-         get => (uint)Sodium.GetConstantNumber("crypto_secretbox_MACBYTES");
+         get => (uint)Sodium.GetConstantNumber_Interop("crypto_secretbox_MACBYTES");
       }
 
       /* see: https://github.com/jedisct1/libsodium.js/issues/305
@@ -21,7 +21,7 @@
 
       public static uint NONCE_BYTES
       {
-         get => (uint)Sodium.GetConstantNumber("crypto_secretbox_NONCEBYTES");
+         get => (uint)Sodium.GetConstantNumber_Interop("crypto_secretbox_NONCEBYTES");
       }
    }
 }

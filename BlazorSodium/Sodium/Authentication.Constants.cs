@@ -4,12 +4,12 @@
    {
       public static uint BYTES
       {
-         get => (uint)Sodium.GetConstantNumber("crypto_auth_BYTES");
+         get => (uint)Sodium.GetConstantNumber_Interop("crypto_auth_BYTES");
       }
 
       public static uint KEY_BYTES
       {
-         get => (uint)Sodium.GetConstantNumber("crypto_auth_KEYBYTES");
+         get => (uint)Sodium.GetConstantNumber_Interop("crypto_auth_KEYBYTES");
       }
    }
 }

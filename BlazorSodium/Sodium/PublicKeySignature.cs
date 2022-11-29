@@ -4,6 +4,7 @@ using System.Runtime.Versioning;
 
 namespace BlazorSodium.Sodium
 {
+   [SupportedOSPlatform("browser")]
    public static partial class PublicKeySignature
    {
       /// <summary>
@@ -13,8 +14,8 @@ namespace BlazorSodium.Sodium
       /// <param name="privateKey"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign.json"/>
-      [JSImport("sodium.crypto_sign", "blazorSodium")]
-      public static partial byte[] Crypto_Sign(byte[] message, byte[] privateKey);
+      public static byte[] Crypto_Sign(byte[] message, byte[] privateKey)
+         => Crypto_Sign_Interop(message, privateKey);
 
       /// <summary>
       /// Create a signature with attaching a copy of the original message.
@@ -23,8 +24,8 @@ namespace BlazorSodium.Sodium
       /// <param name="privateKey"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_detached.json"/>
-      [JSImport("sodium.crypto_sign_detached", "blazorSodium")]
-      public static partial byte[] Crypto_Sign_Detached(byte[] message, byte[] privateKey);
+      public static byte[] Crypto_Sign_Detached(byte[] message, byte[] privateKey)
+         => Crypto_Sign_Detached_Interop(message, privateKey);
 
       /// <summary>
       /// Convert an Ed25519 public key to an X25519 public key.
@@ -32,8 +33,8 @@ namespace BlazorSodium.Sodium
       /// <param name="ed25519PublicKey"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_ed25519_pk_to_curve25519.json"/>
-      [JSImport("sodium.crypto_sign_ed25519_pk_to_curve25519", "blazorSodium")]
-      public static partial byte[] Crypto_Sign_Ed25519_PK_To_Curve25519(byte[] publicKey);
+      public static byte[] Crypto_Sign_Ed25519_PK_To_Curve25519(byte[] publicKey)
+         => Crypto_Sign_Ed25519_PK_To_Curve25519_Interop(publicKey);
 
       /// <summary>
       /// Convert an Ed25519 private key to an X25519 private key.
@@ -41,30 +42,8 @@ namespace BlazorSodium.Sodium
       /// <param name="ed25519PrivateKey"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_ed25519_sk_to_curve25519.json"/>
-      [JSImport("sodium.crypto_sign_ed25519_sk_to_curve25519", "blazorSodium")]
-      public static partial byte[] Crypto_Sign_Ed25519_SK_To_Curve25519(byte[] privateKey);
-
-      /* Missing from the sodium module
-      /// <summary>
-      /// Extract the public key from an Ed25519 private key.
-      /// </summary>
-      /// <param name="privateKey"></param>
-      /// <returns></returns>
-      /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_ed25519_sk_to_pk.json"/>
-      [JSImport("sodium.crypto_sign_ed25519_sk_to_pk", "blazorSodium")]
-      public static partial byte[] Crypto_Sign_Ed25519_SK_To_PK(byte[] privateKey);
-      */
-
-      /* Missing from the sodium module
-      /// <summary>
-      /// Extract the seed from an Ed25519 private key.
-      /// </summary>
-      /// <param name="privateKey"></param>
-      /// <returns></returns>
-      /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_ed25519_sk_to_seed.json"/>
-      [JSImport("sodium.crypto_sign_ed25519_sk_to_seed", "blazorSodium")]
-      public static partial byte[] Crypto_Sign_Ed25519_SK_To_Seed(byte[] privateKey);
-      */
+      public static byte[] Crypto_Sign_Ed25519_SK_To_Curve25519(byte[] privateKey)
+         => Crypto_Sign_Ed25519_SK_To_Curve25519_Interop(privateKey);
 
       /// <summary>
       /// Compute a signature for the message previously supplied using Crypto_Sign_Update().
@@ -73,9 +52,8 @@ namespace BlazorSodium.Sodium
       /// <param name="privateKey"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_final_create.json"/>
-      [SupportedOSPlatform("browser")]
       public static byte[] Crypto_Sign_Final_Create(StateAddress stateAddress, byte[] privateKey)
-         => Crypto_Sign_Final_Create_Internal(stateAddress.Value, privateKey);
+         => Crypto_Sign_Final_Create_Interop(stateAddress.Value, privateKey);
 
       /// <summary>
       /// Verify the provided signature is valid for the message previously supplied using Crypto_Sign_Update().
@@ -85,9 +63,8 @@ namespace BlazorSodium.Sodium
       /// <param name="publicKey"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_final_verify.json"/>
-      [SupportedOSPlatform("browser")]
       public static bool Crypto_Sign_Final_Verify(StateAddress stateAddress, byte[] signature, byte[] publicKey)
-         => Crypto_Sign_Final_Verify_Internal(stateAddress.Value, signature, publicKey);
+         => Crypto_Sign_Final_Verify_Interop(stateAddress.Value, signature, publicKey);
 
       /// <summary>
       /// Initialize the signature system for a multi-part message.
@@ -95,10 +72,9 @@ namespace BlazorSodium.Sodium
       /// </summary>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_init.json"/>
-      [SupportedOSPlatform("browser")]
       public static StateAddress Crypto_Sign_Init()
       {
-         int address = Crypto_Sign_Init_Internal();
+         int address = Crypto_Sign_Init_Interop();
          return new StateAddress(address);
       }
 
@@ -107,10 +83,9 @@ namespace BlazorSodium.Sodium
       /// </summary>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_keypair.json"/>
-      [SupportedOSPlatform("browser")]
       public static Ed25519KeyPair Crypto_Sign_KeyPair()
       {
-         JSObject jsObject = Crypto_Sign_KeyPair_Internal();
+         JSObject jsObject = Crypto_Sign_KeyPair_Interop();
          return Ed25519KeyPair.FromJavaScript(jsObject);
       }
 
@@ -121,8 +96,8 @@ namespace BlazorSodium.Sodium
       /// <param name="publicKey"></param>
       /// <returns>If the signature is valid, the message without the signature is returned.</returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_open.json"/>
-      [JSImport("sodium.crypto_sign_open", "blazorSodium")]
-      public static partial byte[] Crypto_Sign_Open(byte[] signedMessage, byte[] publicKey);
+      public static byte[] Crypto_Sign_Open(byte[] signedMessage, byte[] publicKey)
+         => Crypto_Sign_Open_Interop(signedMessage, publicKey);
 
       /// <summary>
       /// Derive an Ed25519 key pair from a seed.
@@ -130,10 +105,9 @@ namespace BlazorSodium.Sodium
       /// <param name="seed"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_seed_keypair.json"/>
-      [SupportedOSPlatform("browser")]
       public static Ed25519KeyPair Crypto_Sign_Seed_KeyPair(byte[] seed)
       {
-         JSObject jsObject = Crypto_Sign_Seed_KeyPair_Internal(seed);
+         JSObject jsObject = Crypto_Sign_Seed_KeyPair_Interop(seed);
          return Ed25519KeyPair.FromJavaScript(jsObject);
       }
 
@@ -143,9 +117,8 @@ namespace BlazorSodium.Sodium
       /// <param name="stateAddress"></param>
       /// <param name="messageChunk"></param>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_update.json"/>
-      [SupportedOSPlatform("browser")]
       public static void Crypto_Sign_Update(StateAddress stateAddress, byte[] messageChunk)
-         => Crypto_Sign_Update_Internal(stateAddress.Value, messageChunk);
+         => Crypto_Sign_Update_Interop(stateAddress.Value, messageChunk);
 
       /// <summary>
       /// Verify the signed message has a valid signature for the provided public key.
@@ -155,7 +128,7 @@ namespace BlazorSodium.Sodium
       /// <param name="publicKey"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_verify_detached.json"/>
-      [JSImport("sodium.crypto_sign_verify_detached", "blazorSodium")]
-      public static partial bool Crypto_Sign_Verify_Detached(byte[] signature, byte[] message, byte[] publicKey);
+      public static bool Crypto_Sign_Verify_Detached(byte[] signature, byte[] message, byte[] publicKey)
+         => Crypto_Sign_Verify_Detached_Interop(signature, message, publicKey);
    }
 }

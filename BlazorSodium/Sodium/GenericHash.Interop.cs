@@ -13,7 +13,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_generichash.json"/>
       [JSImport("sodium.crypto_generichash", "blazorSodium")]
-      internal static partial byte[] Crypto_GenericHash_Internal([JSMarshalAs<JSType.Number>] long hashLength, byte[] message, byte[] key = null);
+      internal static partial byte[] Crypto_GenericHash_Interop([JSMarshalAs<JSType.Number>] long hashLength, byte[] message, byte[] key = null);
 
       /// <summary>
       /// Internal method.
@@ -24,7 +24,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_generichash.json"/>
       [JSImport("sodium.crypto_generichash", "blazorSodium")]
-      internal static partial byte[] Crypto_GenericHash_Internal([JSMarshalAs<JSType.Number>] long hashLength, string message, byte[] key = null);
+      internal static partial byte[] Crypto_GenericHash_Interop([JSMarshalAs<JSType.Number>] long hashLength, string message, byte[] key = null);
 
       /* Missing from the sodium module
       /// <summary>
@@ -37,7 +37,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_generichash_blake2b_salt_personal.json"/>
       [JSImport("sodium.crypto_generichash_blake2b_salt_personal", "blazorSodium")]
-      internal static partial byte[] Crypto_GenericHash_Blake2b_Salt_Personal_Internal([JSMarshalAs<JSType.Number>] long subkeyLength, byte[] key = null, byte[] id = null, byte[] context = null);
+      internal static partial byte[] Crypto_GenericHash_Blake2b_Salt_Personal_Interop([JSMarshalAs<JSType.Number>] long subkeyLength, byte[] key = null, byte[] id = null, byte[] context = null);
       */
 
       /// <summary>
@@ -48,7 +48,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_generichash_final.json"/>
       [JSImport("sodium.crypto_generichash_final", "blazorSodium")]
-      internal static partial byte[] Crypto_GenericHash_Final_Internal(int stateAddress, [JSMarshalAs<JSType.Number>] long hashLength);
+      internal static partial byte[] Crypto_GenericHash_Final_Interop(int stateAddress, [JSMarshalAs<JSType.Number>] long hashLength);
 
       /// <summary>
       /// Internal method.
@@ -58,7 +58,15 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_generichash_init.json"/>
       [JSImport("sodium.crypto_generichash_init", "blazorSodium")]
-      internal static partial int Crypto_GenericHash_Init_Internal(byte[] key, [JSMarshalAs<JSType.Number>] long hashLength);
+      internal static partial int Crypto_GenericHash_Init_Interop(byte[] key, [JSMarshalAs<JSType.Number>] long hashLength);
+
+      /// <summary>
+      /// Internal method.
+      /// </summary>
+      /// <returns></returns>
+      /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_generichash_keygen.json"/>
+      [JSImport("sodium.crypto_generichash_keygen", "blazorSodium")]
+      internal static partial byte[] Crypto_GenericHash_KeyGen_Interop();
 
       /// <summary>
       /// Internal method.
@@ -67,6 +75,6 @@ namespace BlazorSodium.Sodium
       /// <param name="messageChunk"></param>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_generichash_update.json"/>
       [JSImport("sodium.crypto_generichash_update", "blazorSodium")]
-      internal static partial void Crypto_GenericHash_Update_Internal(int stateAddress, byte[] messageChunk);
+      internal static partial void Crypto_GenericHash_Update_Interop(int stateAddress, byte[] messageChunk);
    }
 }

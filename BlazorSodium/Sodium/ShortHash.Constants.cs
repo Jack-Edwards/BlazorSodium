@@ -4,12 +4,12 @@
    {
       public static uint BYTES
       {
-         get => (uint)Sodium.GetConstantNumber("crypto_shorthash_BYTES");
+         get => (uint)Sodium.GetConstantNumber_Interop("crypto_shorthash_BYTES");
       }
 
       public static uint KEY_BYTES
       {
-         get => (uint)Sodium.GetConstantNumber("crypto_shorthash_KEYBYTES");
+         get => (uint)Sodium.GetConstantNumber_Interop("crypto_shorthash_KEYBYTES");
       }
 
       /* Missing from the sodium module
