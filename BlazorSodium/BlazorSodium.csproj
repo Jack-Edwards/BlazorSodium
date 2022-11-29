@@ -6,6 +6,7 @@
       <ImplicitUsings>disable</ImplicitUsings>
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
       <LangVersion>preview</LangVersion>
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
       <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
       <Title>BlazorSodium</Title>
       <Authors>Jack Edwards</Authors>
@@ -16,8 +17,8 @@
       <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
       <IncludeSymbols>True</IncludeSymbols>
       <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-      <Version>1.0.0</Version>
-      <PackageVersion>1.0.0</PackageVersion>
+      <Version>1.1.0</Version>
+      <PackageVersion>1.1.0</PackageVersion>
    </PropertyGroup>
 
    <ItemGroup>
