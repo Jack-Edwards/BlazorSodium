@@ -4,12 +4,12 @@
    {
       public static uint BYTES
       {
-         get => (uint)Sodium.GetConstantNumber("crypto_scalarmult_BYTES");
+         get => (uint)Sodium.GetConstantNumber_Interop("crypto_scalarmult_BYTES");
       }
 
       public static uint SCALAR_BYTES
       {
-         get => (uint)Sodium.GetConstantNumber("crypto_scalarmult_SCALARBYTES");
+         get => (uint)Sodium.GetConstantNumber_Interop("crypto_scalarmult_SCALARBYTES");
       }
 
       /* Missing from the sodium module

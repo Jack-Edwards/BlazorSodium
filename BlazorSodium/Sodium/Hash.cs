@@ -1,7 +1,8 @@
-﻿using System.Runtime.InteropServices.JavaScript;
+﻿using System.Runtime.Versioning;
 
 namespace BlazorSodium.Sodium
 {
+   [SupportedOSPlatform("browser")]
    public static partial class Hash
    {
       /// <summary>
@@ -10,8 +11,8 @@ namespace BlazorSodium.Sodium
       /// <param name="message"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_hash.json"/>
-      [JSImport("sodium.crypto_hash", "blazorSodium")]
-      public static partial byte[] Crypto_Hash(byte[] message);
+      public static byte[] Crypto_Hash(byte[] message)
+         => Crypto_Hash_Interop(message);
 
       /// <summary>
       /// Hash the provided message using a SHA-2 hashing function.
@@ -19,8 +20,8 @@ namespace BlazorSodium.Sodium
       /// <param name="message"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_hash.json"/>
-      [JSImport("sodium.crypto_hash", "blazorSodium")]
-      public static partial byte[] Crypto_Hash(string message);
+      public static byte[] Crypto_Hash(string message)
+         => Crypto_Hash_Interop(message);
 
       /* Missing from the sodium module:
        * - crypto_hash_sha256

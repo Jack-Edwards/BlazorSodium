@@ -1,8 +1,8 @@
-﻿using System.Runtime.InteropServices.JavaScript;
-using System.Runtime.Versioning;
+﻿using System.Runtime.Versioning;
 
 namespace BlazorSodium.Sodium
 {
+   [SupportedOSPlatform("browser")]
    public static partial class KeyDerivation
    {
       /// <summary>
@@ -14,9 +14,8 @@ namespace BlazorSodium.Sodium
       /// <param name="key"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_kdf_derive_from_key.json"/>
-      [SupportedOSPlatform("browser")]
       public static byte[] KDF_Derive_From_Key(uint subkeyLength, uint subkeyId, string context, byte[] key)
-         => KDF_Derive_From_Key_Internal(subkeyLength, subkeyId, context, key);
+         => KDF_Derive_From_Key_Interop(subkeyLength, subkeyId, context, key);
 
       /// <summary>
       /// Derive a subkey from the provided paremeters and master key.
@@ -27,16 +26,15 @@ namespace BlazorSodium.Sodium
       /// <param name="key"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_kdf_derive_from_key.json"/>
-      [SupportedOSPlatform("browser")]
       public static byte[] KDF_Derive_From_Key(uint subkeyLength, uint subkeyId, string context, string key)
-         => KDF_Derive_From_Key_Internal(subkeyLength, subkeyId, context, key);
+         => KDF_Derive_From_Key_Interop(subkeyLength, subkeyId, context, key);
 
       /// <summary>
       /// Create a master key.
       /// </summary>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_kdf_keygen.json"/>
-      [JSImport("sodium.crypto_kdf_keygen", "blazorSodium")]
-      public static partial byte[] KDF_KeyGen();
+      public static byte[] KDF_KeyGen()
+         => KDF_KeyGen_Interop();
    }
 }

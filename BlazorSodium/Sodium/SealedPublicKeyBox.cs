@@ -1,9 +1,9 @@
 ﻿using BlazorSodium.Sodium.Models;
-using System.Runtime.InteropServices.JavaScript;
 using System.Runtime.Versioning;
 
 namespace BlazorSodium.Sodium
 {
+   [SupportedOSPlatform("browser")]
    public static partial class SealedPublicKeyBox
    {
       /// <summary>
@@ -12,8 +12,8 @@ namespace BlazorSodium.Sodium
       /// <param name="message"></param>
       /// <param name="publicKey"></param>
       /// <returns></returns>
-      [JSImport("sodium.crypto_box_seal", "blazorSodium")]
-      public static partial byte[] Crypto_Box_Seal(byte[] message, byte[] publicKey);
+      public static byte[] Crypto_Box_Seal(byte[] message, byte[] publicKey)
+         => Crypto_Box_Seal_Interop(message, publicKey);
 
       /// <summary>
       /// Encrypts a message using only the recipient's public key.
@@ -21,8 +21,8 @@ namespace BlazorSodium.Sodium
       /// <param name="message"></param>
       /// <param name="publicKey"></param>
       /// <returns></returns>
-      [JSImport("sodium.crypto_box_seal", "blazorSodium")]
-      public static partial byte[] Crypto_Box_Seal(string message, byte[] publicKey);
+      public static byte[] Crypto_Box_Seal(string message, byte[] publicKey)
+         => Crypto_Box_Seal_Interop(message, publicKey);
 
       /// <summary>
       /// Decrypts a ciphertext using the recipient's key pair.
@@ -31,8 +31,7 @@ namespace BlazorSodium.Sodium
       /// <param name="keyPair"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_box_seal_open.json"/>
-      [SupportedOSPlatform("browser")]
       public static byte[] Crypto_Box_Seal_Open(byte[] ciphertext, X25519KeyPair keyPair)
-         => Crypto_Box_Seal_Open_Internal(ciphertext, keyPair.PublicKey, keyPair.PrivateKey);
+         => Crypto_Box_Seal_Open_Interop(ciphertext, keyPair.PublicKey, keyPair.PrivateKey);
    }
 }

@@ -14,7 +14,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_kdf_derive_from_key.json"/>
       [JSImport("sodium.crypto_kdf_derive_from_key", "blazorSodium")]
-      public static partial byte[] KDF_Derive_From_Key_Internal([JSMarshalAs<JSType.Number>] long subkeyLength, [JSMarshalAs<JSType.Number>] long subkeyId, string context, byte[] key);
+      internal static partial byte[] KDF_Derive_From_Key_Interop([JSMarshalAs<JSType.Number>] long subkeyLength, [JSMarshalAs<JSType.Number>] long subkeyId, string context, byte[] key);
 
       /// <summary>
       /// Internal method.
@@ -26,6 +26,14 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_kdf_derive_from_key.json"/>
       [JSImport("sodium.crypto_kdf_derive_from_key", "blazorSodium")]
-      public static partial byte[] KDF_Derive_From_Key_Internal([JSMarshalAs<JSType.Number>] long subkeyLength, [JSMarshalAs<JSType.Number>] long subkeyId, string context, string key);
+      internal static partial byte[] KDF_Derive_From_Key_Interop([JSMarshalAs<JSType.Number>] long subkeyLength, [JSMarshalAs<JSType.Number>] long subkeyId, string context, string key);
+
+      /// <summary>
+      /// Internal method.
+      /// </summary>
+      /// <returns></returns>
+      /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_kdf_keygen.json"/>
+      [JSImport("sodium.crypto_kdf_keygen", "blazorSodium")]
+      internal static partial byte[] KDF_KeyGen_Interop();
    }
 }
