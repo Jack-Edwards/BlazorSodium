@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace BlazorSodium.Demo.Shared
 {
+   [SupportedOSPlatform("browser")]
    public partial class BlazorSodiumComponent : ComponentBase
    {
       [Inject]
@@ -22,28 +23,29 @@ namespace BlazorSodium.Demo.Shared
          await BlazorSodiumService.InitializeAsync();
          Sodium.Sodium.PrintSodium();
 
-         if (OperatingSystem.IsBrowser())
-         {
-            string password = "my test password";
-            uint interactiveOpsLimit = PasswordHash.OPSLIMIT_INTERACTIVE;
-            uint interactiveMemLimit = PasswordHash.MEMLIMIT_INTERACTIVE;
-            string hashedPassword = PasswordHash.Crypto_PwHash_Str(password, interactiveOpsLimit, interactiveMemLimit);
-            Console.WriteLine($"Hashed password: {hashedPassword}");
+         string password = "my test password";
+         uint interactiveOpsLimit = PasswordHash.OPSLIMIT_INTERACTIVE;
+         uint interactiveMemLimit = PasswordHash.MEMLIMIT_INTERACTIVE;
+         string hashedPassword = PasswordHash.Crypto_PwHash_Str(password, interactiveOpsLimit, interactiveMemLimit);
+         Console.WriteLine($"Hashed password: {hashedPassword}");
 
-            bool needsRehash = PasswordHash.Crypto_PwHash_Str_Needs_Rehash(hashedPassword, interactiveOpsLimit, interactiveMemLimit);
-            Console.WriteLine($"Password needs rehash: {needsRehash}");
+         bool needsRehash = PasswordHash.Crypto_PwHash_Str_Needs_Rehash(hashedPassword, interactiveOpsLimit, interactiveMemLimit);
+         Console.WriteLine($"Password needs rehash: {needsRehash}");
 
-            bool invalidVerification = PasswordHash.Crypto_PwHash_Str_Verify(hashedPassword, "bad password");
-            Console.WriteLine($"Bad password is caught: {!invalidVerification}");
+         bool invalidVerification = PasswordHash.Crypto_PwHash_Str_Verify(hashedPassword, "bad password");
+         Console.WriteLine($"Bad password is caught: {!invalidVerification}");
 
-            bool validVerification = PasswordHash.Crypto_PwHash_Str_Verify(hashedPassword, password);
-            Console.WriteLine($"Good password is accepted: {validVerification}");
-         }
+         bool validVerification = PasswordHash.Crypto_PwHash_Str_Verify(hashedPassword, password);
+         Console.WriteLine($"Good password is accepted: {validVerification}");
 
-         if (OperatingSystem.IsBrowser())
-         {
-            GenericHash.Crypto_GenericHash_Init(GenericHash.BYTES);
-         }
+         GenericHash.Crypto_GenericHash_Init(GenericHash.BYTES);
+
+         byte[] dataToPad = "foo"u8.ToArray();
+         Console.WriteLine(Convert.ToHexString(dataToPad));
+         byte[] paddedData = Padding.Pad(dataToPad, 8);
+         Console.WriteLine(Convert.ToHexString(paddedData));
+         byte[] unpaddedData = Padding.Unpad(paddedData, 8);
+         Console.WriteLine(Convert.ToHexString(unpaddedData));
       }
 
       private string SaltString { get; set; }
