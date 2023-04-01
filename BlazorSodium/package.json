@@ -1,6 +1,6 @@
 {
    "name": "blazor_sodium",
-   "version": "1.0.0",
+   "version": "1.2.0",
    "description": "",
    "main": "index.js",
    "scripts": {
@@ -18,7 +18,7 @@
    "dependencies": {
       "buffer": "^6.0.3",
       "crypto-browserify": "^3.12.0",
-      "libsodium-wrappers": "^0.7.10",
+      "libsodium-wrappers-sumo": "^0.7.11",
       "stream-browserify": "^3.0.0"
    }
 }
