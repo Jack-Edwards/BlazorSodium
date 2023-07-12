@@ -5,38 +5,27 @@
       <Nullable>disable</Nullable>
       <ImplicitUsings>disable</ImplicitUsings>
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-      <LangVersion>preview</LangVersion>
       <GenerateDocumentationFile>true</GenerateDocumentationFile>
       <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
       <Title>BlazorSodium</Title>
       <Authors>Jack Edwards</Authors>
       <Description>Simple wrapper over libsodium.js to use in Blazor WASM projects</Description>
-      <PackageProjectUrl></PackageProjectUrl>
+      <PackageProjectUrl>https://www.nuget.org/packages/BlazorSodium</PackageProjectUrl>
       <RepositoryUrl>https://github.com/Jack-Edwards/BlazorSodium</RepositoryUrl>
       <PackageLicenseExpression>MIT</PackageLicenseExpression>
       <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
       <IncludeSymbols>True</IncludeSymbols>
       <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-      <Version>1.2.0</Version>
-      <PackageVersion>1.2.0</PackageVersion>
+      <Version>1.2.1</Version>
+      <PackageVersion>1.2.1</PackageVersion>
    </PropertyGroup>
-
-   <ItemGroup>
-     <Content Remove="package-lock.json" />
-     <Content Remove="package.json" />
-   </ItemGroup>
-
-   <ItemGroup>
-     <None Include="package-lock.json" />
-     <None Include="package.json" />
-   </ItemGroup>
 
    <ItemGroup>
       <SupportedPlatform Include="browser" />
    </ItemGroup>
 
    <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.4" />
+      <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.9" />
    </ItemGroup>
 
    <ItemGroup>
