@@ -27,7 +27,7 @@ namespace BlazorSodium.Sodium
       /// <summary>
       /// Internal method.
       /// </summary>
-      /// <param name="ed25519PublicKey"></param>
+      /// <param name="publicKey"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_ed25519_pk_to_curve25519.json"/>
       [JSImport("sodium.crypto_sign_ed25519_pk_to_curve25519", "blazorSodium")]
@@ -36,7 +36,7 @@ namespace BlazorSodium.Sodium
       /// <summary>
       /// Internal method.
       /// </summary>
-      /// <param name="ed25519PrivateKey"></param>
+      /// <param name="privateKey"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_ed25519_sk_to_curve25519.json"/>
       [JSImport("sodium.crypto_sign_ed25519_sk_to_curve25519", "blazorSodium")]

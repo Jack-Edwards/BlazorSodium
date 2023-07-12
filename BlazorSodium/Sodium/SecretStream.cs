@@ -50,7 +50,7 @@ namespace BlazorSodium.Sodium
       /// </summary>
       /// <param name="stateAddress"></param>
       /// <param name="cipherChunk"></param>
-      /// <param name="additionalData">Optional</param>
+      /// <param name="authenticatedData">Optional</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_secretstream_xchacha20poly1305_pull.json"/>
       public static SecretStreamPullData Crypto_SecretStream_XChaCha20Poly1305_Pull(StateAddress stateAddress, byte[] cipherChunk, byte[] authenticatedData = null)
