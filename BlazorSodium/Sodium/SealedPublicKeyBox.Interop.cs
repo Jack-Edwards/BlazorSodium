@@ -25,9 +25,9 @@ namespace BlazorSodium.Sodium
       /// <summary>
       /// Internal method.
       /// </summary>
-      /// <param name=""></param>
-      /// <param name=""></param>
-      /// <param name=""></param>
+      /// <param name="ciphertext"></param>
+      /// <param name="publicKey"></param>
+      /// <param name="privateKey"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_box_seal_open.json"/>
       [JSImport("sodium.crypto_box_seal_open", "blazorSodium")]
