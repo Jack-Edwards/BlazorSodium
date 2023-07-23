@@ -4,6 +4,7 @@
    "description": "",
    "main": "index.js",
    "scripts": {
+      "preinstall": "npx only-allow pnpm",
       "build": "webpack ./Npm/src/blazorSodium.js --config ./webpack.config.js --output-path ./wwwroot --output-filename blazorSodium.bundle.js"
    },
    "author": "Jack Edwards",
