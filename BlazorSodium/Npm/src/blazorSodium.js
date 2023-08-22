@@ -1,4 +1,5 @@
-﻿export const sodium = require('libsodium-wrappers-sumo');
+﻿import _sodium from 'libsodium-wrappers-sumo';
+export const sodium = _sodium;
 
 export async function init() {
    await sodium.ready;
