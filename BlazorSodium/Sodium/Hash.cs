@@ -23,15 +23,20 @@ namespace BlazorSodium.Sodium
       public static byte[] Crypto_Hash(string message)
          => Crypto_Hash_Interop(message);
 
-      /* Missing from the sodium module:
-       * - crypto_hash_sha256
-       * - crypto_hash_sha256_final
-       * - crypto_hash_sha256_init
-       * - crypto_hash_sha256_update
-       * - crypto_hash_sha512
-       * - crypto_hash_sha512_final
-       * - crypto_hash_sha512_init
-       * - crypto_hash_sha512_update
-      */
-   }
+
+       public static byte[] Crypto_Hash_Sha256(byte[] message)
+         => Crypto_Hash_Sha256_Interop(message);
+
+
+        /* Missing from the sodium module:
+         * - crypto_hash_sha256
+         * - crypto_hash_sha256_final
+         * - crypto_hash_sha256_init
+         * - crypto_hash_sha256_update
+         * - crypto_hash_sha512
+         * - crypto_hash_sha512_final
+         * - crypto_hash_sha512_init
+         * - crypto_hash_sha512_update
+        */
+    }
 }
