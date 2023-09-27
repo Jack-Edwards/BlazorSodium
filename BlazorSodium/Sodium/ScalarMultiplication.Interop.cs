@@ -35,7 +35,7 @@ namespace BlazorSodium.Sodium
       public static partial byte[] Crypto_ScalarMult_Ed25519(byte[] privateKey, byte[] publicKey);
       */
 
-      /* Missing from the sodium module
+      
       /// <summary>
       /// Compute the public key for the provided private key.
       /// </summary>
@@ -43,10 +43,10 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_scalarmult_ed25519_base.json"/>
       [JSImport("sodium.crypto_scalarmult_ed25519_base", "blazorSodium")]
-      public static partial byte[] Crypto_ScalarMult_Ed25519_Base(byte[] privateKey);
-      */
+      public static partial byte[] Crypto_ScalarMult_Ed25519_Base_Interop(byte[] privateKey);
+      
 
-      /* Missing from the sodium module
+  
       /// <summary>
       /// Compute the public key for the provided private key.
       /// </summary>
@@ -54,8 +54,8 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_scalarmult_ed25519_base_noclamp.json"/>
       [JSImport("sodium.crypto_scalarmult_ed25519_base_noclamp", "blazorSodium")]
-      public static partial byte[] Crypto_ScalarMult_Ed25519_Base_NoClamp(byte[] privateKey);
-      */
+      public static partial byte[] Crypto_ScalarMult_Ed25519_Base_NoClamp_Interop(byte[] privateKey);
+      
 
       /* Missing from the sodium module
       /// <summary>
