@@ -6,14 +6,15 @@ namespace BlazorSodium.Services
 {
    public interface IBlazorSodiumService
    {
+      /// <summary>
+      /// Import the blazorSodium.bundle.js file which allows BlazorSodium to invoke libsodium.js.
+      /// </summary>
+      /// <returns></returns>
       Task InitializeAsync();
    }
 
    public partial class BlazorSodiumService : IBlazorSodiumService
    {
-      public BlazorSodiumService()
-      { }
-
       public async Task InitializeAsync()
       {
          if (OperatingSystem.IsBrowser())

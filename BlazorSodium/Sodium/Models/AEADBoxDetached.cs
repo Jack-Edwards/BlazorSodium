@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices.JavaScript;
+﻿using System;
+using System.Runtime.InteropServices.JavaScript;
 using System.Runtime.Versioning;
 
 namespace BlazorSodium.Sodium.Models
@@ -17,8 +18,12 @@ namespace BlazorSodium.Sodium.Models
       [SupportedOSPlatform("browser")]
       public static AEADBoxDetached FromJavaScript(JSObject jsObject)
       {
-         byte[] mac = jsObject.GetPropertyAsByteArray("mac");
-         byte[] cipher = jsObject.GetPropertyAsByteArray("ciphertext");
+         byte[] mac = jsObject.GetPropertyAsByteArray("mac")
+            ?? throw new NullReferenceException("'mac' cannot be null.");
+         
+         byte[] cipher = jsObject.GetPropertyAsByteArray("ciphertext")
+            ?? throw new NullReferenceException("'ciphertext' cannot be null.");
+         
          return new AEADBoxDetached(mac, cipher);
       }
    }

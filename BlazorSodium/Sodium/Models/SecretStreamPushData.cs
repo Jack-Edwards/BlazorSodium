@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices.JavaScript;
+﻿using System;
+using System.Runtime.InteropServices.JavaScript;
 using System.Runtime.Versioning;
 
 namespace BlazorSodium.Sodium.Models
@@ -17,7 +18,9 @@ namespace BlazorSodium.Sodium.Models
       [SupportedOSPlatform("browser")]
       public static SecretStreamPushData FromJavaScript(JSObject jsObject)
       {
-         byte[] header = jsObject.GetPropertyAsByteArray("header");
+         byte[] header = jsObject.GetPropertyAsByteArray("header")
+            ?? throw new NullReferenceException("'header' cannot be null.");
+         
          int address = jsObject.GetPropertyAsInt32("state");
          StateAddress stateAddress = new StateAddress(address);
          return new SecretStreamPushData(header, stateAddress);

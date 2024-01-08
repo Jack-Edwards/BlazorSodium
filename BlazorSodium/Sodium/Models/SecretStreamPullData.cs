@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices.JavaScript;
+﻿using System;
+using System.Runtime.InteropServices.JavaScript;
 using System.Runtime.Versioning;
 
 namespace BlazorSodium.Sodium.Models
@@ -17,7 +18,9 @@ namespace BlazorSodium.Sodium.Models
       [SupportedOSPlatform("browser")]
       public static SecretStreamPullData FromJavaScript(JSObject jsObject)
       {
-         byte[] message = jsObject.GetPropertyAsByteArray("message");
+         byte[] message = jsObject.GetPropertyAsByteArray("message")
+            ?? throw new NullReferenceException("'message' cannot be null.");
+         
          uint tag = (uint)jsObject.GetPropertyAsInt32("tag");
          return new SecretStreamPullData(message, tag);
       }

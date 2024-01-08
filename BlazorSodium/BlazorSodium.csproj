@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
    <PropertyGroup>
-      <TargetFramework>net7.0</TargetFramework>
-      <Nullable>disable</Nullable>
+      <TargetFramework>net8.0</TargetFramework>
+      <Nullable>enable</Nullable>
       <ImplicitUsings>disable</ImplicitUsings>
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
       <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -18,6 +18,7 @@
       <SymbolPackageFormat>snupkg</SymbolPackageFormat>
       <Version>1.2.2</Version>
       <PackageVersion>1.2.2</PackageVersion>
+      <LangVersion>12</LangVersion>
    </PropertyGroup>
 
    <ItemGroup>
@@ -25,7 +26,7 @@
    </ItemGroup>
 
    <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.9" />
+      <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0" />
    </ItemGroup>
 
    <ItemGroup>

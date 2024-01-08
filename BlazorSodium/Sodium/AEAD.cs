@@ -16,7 +16,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_decrypt.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_Decrypt(byte[] ciphertext, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_Decrypt(byte[] ciphertext, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_Decrypt_Interop(secretNonce: null, ciphertext: ciphertext, additionalData: additionalData, publicNonce: publicNonce, key: key);
 
       /// <summary>

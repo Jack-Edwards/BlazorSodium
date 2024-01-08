@@ -20,14 +20,20 @@ namespace BlazorSodium.Sodium.Models
       [SupportedOSPlatform("browser")]
       public static X25519KeyPair FromJavaScript(JSObject jsObject)
       {
-         string keyType = jsObject.GetPropertyAsString("keyType");
+         string keyType = jsObject.GetPropertyAsString("keyType")
+            ?? throw new NullReferenceException("'keyType' cannot be null.");
+         
          if (keyType != _keyType)
          {
             throw new ArgumentException($"'{keyType}' is not a valid key type for this class", nameof(jsObject));
          }
 
-         byte[] privateKey = jsObject.GetPropertyAsByteArray("privateKey");
-         byte[] publicKey = jsObject.GetPropertyAsByteArray("publicKey");
+         byte[] privateKey = jsObject.GetPropertyAsByteArray("privateKey")
+            ?? throw new NullReferenceException("'privateKey' cannot be null.");
+         
+         byte[] publicKey = jsObject.GetPropertyAsByteArray("publicKey")
+            ?? throw new NullReferenceException("'publicKey' cannot be null.");
+         
          return new X25519KeyPair(privateKey, publicKey);
       }
    }

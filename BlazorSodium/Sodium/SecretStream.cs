@@ -53,7 +53,7 @@ namespace BlazorSodium.Sodium
       /// <param name="authenticatedData">Optional</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_secretstream_xchacha20poly1305_pull.json"/>
-      public static SecretStreamPullData Crypto_SecretStream_XChaCha20Poly1305_Pull(StateAddress stateAddress, byte[] cipherChunk, byte[] authenticatedData = null)
+      public static SecretStreamPullData Crypto_SecretStream_XChaCha20Poly1305_Pull(StateAddress stateAddress, byte[] cipherChunk, byte[]? authenticatedData = null)
       {
          JSObject jsObject = Crypto_SecretStream_XChaCha20Poly1305_Pull_Interop(stateAddress.Value, cipherChunk, authenticatedData);
          return SecretStreamPullData.FromJavaScript(jsObject);
@@ -68,7 +68,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_secretstream_xchacha20poly1305_push.json"/>
-      public static byte[] Crypto_SecretStream_XChaCha20Poly1305_Push(StateAddress stateAddress, byte[] messageChunk, uint tag = 0, byte[] additionalData = null)
+      public static byte[] Crypto_SecretStream_XChaCha20Poly1305_Push(StateAddress stateAddress, byte[] messageChunk, uint tag = 0, byte[]? additionalData = null)
          => Crypto_SecretStream_XChaCha20Poly1305_Push_Interop(stateAddress.Value, messageChunk, additionalData, tag);
 
       /// <summary>
@@ -80,7 +80,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_secretstream_xchacha20poly1305_push.json"/>
-      public static byte[] Crypto_SecretStream_XChaCha20Poly1305_Push(StateAddress stateAddress, string messageChunk, uint tag = 0, byte[] additionalData = null)
+      public static byte[] Crypto_SecretStream_XChaCha20Poly1305_Push(StateAddress stateAddress, string messageChunk, uint tag = 0, byte[]? additionalData = null)
          => Crypto_SecretStream_XChaCha20Poly1305_Push_Interop(stateAddress.Value, messageChunk, additionalData, tag);
 
       /// <summary>
