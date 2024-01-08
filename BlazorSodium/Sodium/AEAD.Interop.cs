@@ -69,7 +69,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_encrypt.json"/>
       [JSImport("sodium.crypto_aead_chacha20poly1305_encrypt", "blazorSodium")]
-      internal static partial byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(byte[] message, byte[] secretNonce, byte[] additionalData, byte[] publicNonce, byte[] key);
+      internal static partial byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(byte[] message, byte[] additionalData, byte[] secretNonce, byte[] publicNonce, byte[] key);
 
       /// <summary>
       /// Internal method.
@@ -82,7 +82,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_encrypt.json"/>
       [JSImport("sodium.crypto_aead_chacha20poly1305_encrypt", "blazorSodium")]
-      internal static partial byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(byte[] message, byte[] secretNonce, string additionalData, byte[] publicNonce, byte[] key);
+      internal static partial byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(byte[] message, string additionalData, byte[] secretNonce, byte[] publicNonce, byte[] key);
 
       /// <summary>
       /// Internal method.
@@ -95,7 +95,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_encrypt.json"/>
       [JSImport("sodium.crypto_aead_chacha20poly1305_encrypt", "blazorSodium")]
-      internal static partial byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(string message, byte[] secretNonce, byte[] additionalData, byte[] publicNonce, byte[] key);
+      internal static partial byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(string message, byte[] additionalData, byte[] secretNonce, byte[] publicNonce, byte[] key);
 
       /// <summary>
       /// Internal method.
@@ -108,7 +108,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_encrypt.json"/>
       [JSImport("sodium.crypto_aead_chacha20poly1305_encrypt", "blazorSodium")]
-      internal static partial byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(string message, byte[] secretNonce, string additionalData, byte[] publicNonce, byte[] key);
+      internal static partial byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(string message, string additionalData, byte[] secretNonce, byte[] publicNonce, byte[] key);
 
       /// <summary>
       /// Internal method.

@@ -65,7 +65,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_encrypt.json"/>
       public static byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt(byte[] message, byte[] publicNonce, byte[] key, byte[] additionalData = null)
-         => Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(message: message, secretNonce: null, additionalData: additionalData, publicNonce: publicNonce, key: key);
+         => Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
 
       /// <summary>
       /// Encrypts a message using a secret key and public nonce.
@@ -77,7 +77,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_encrypt.json"/>
       public static byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt(byte[] message, byte[] publicNonce, byte[] key, string additionalData = null)
-         => Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(message: message, secretNonce: null, additionalData: additionalData, publicNonce: publicNonce, key: key);
+         => Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
 
       /// <summary>
       /// Encrypts a message using a secret key and public nonce.
@@ -89,7 +89,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_encrypt.json"/>
       public static byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt(string message, byte[] publicNonce, byte[] key, byte[] additionalData = null)
-         => Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(message: message, secretNonce: null, additionalData: additionalData, publicNonce: publicNonce, key: key);
+         => Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
 
       /// <summary>
       /// Encrypts a message using a secret key and public nonce.
@@ -101,7 +101,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_encrypt.json"/>
       public static byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt(string message, byte[] publicNonce, byte[] key, string additionalData = null)
-         => Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(message: message, secretNonce: null, additionalData: additionalData, publicNonce: publicNonce, key: key);
+         => Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
 
       /// <summary>
       /// Encrypts a message using a secret key and public nonce.
