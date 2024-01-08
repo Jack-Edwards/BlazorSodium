@@ -46,6 +46,8 @@ namespace BlazorSodium.Demo.Shared
          Console.WriteLine(Convert.ToHexString(paddedData));
          byte[] unpaddedData = Padding.Unpad(paddedData, 8);
          Console.WriteLine(Convert.ToHexString(unpaddedData));
+
+         Crypto_AEAD_ChaCha20Poly1305_Encrypt();
       }
 
       private string SaltString { get; set; }
@@ -79,6 +81,7 @@ namespace BlazorSodium.Demo.Shared
 
       protected string SecretStreamKey { get; set; }
       protected byte[] SecretStreamKeyBytes { get; set; }
+      
       [SupportedOSPlatform("browser")]
       protected void GenerateSecretStreamKey()
       {
@@ -91,6 +94,7 @@ namespace BlazorSodium.Demo.Shared
       protected string SecretStreamPlaintext { get; set; }
       protected string HexCiphertext { get; set; }
       protected string DecryptedText { get; set; }
+      
       [SupportedOSPlatform("browser")]
       protected void EncryptSecretStream()
       {
@@ -120,6 +124,18 @@ namespace BlazorSodium.Demo.Shared
             plaintextParts.Add(pullData.Message);
          }
          DecryptedText = Encoding.UTF8.GetString(plaintextParts.SelectMany(x => x).ToArray());
+      }
+
+      protected void Crypto_AEAD_ChaCha20Poly1305_Encrypt()
+      {
+         byte[] test = "It worked!"u8.ToArray();
+         byte[] nonce = RandomBytes.RandomBytes_Buf(AEAD.CHACHA20POLY1305_NPUB_BYTES);
+         byte[] key = RandomBytes.RandomBytes_Buf(AEAD.CHACHA20POLY1305_KEY_BYTES);
+         byte[] additionalData = [0x10];
+         byte[] encrypted = AEAD.Crypto_AEAD_ChaCha20Poly1305_Encrypt(test, nonce, key, additionalData);
+         byte[] decrypted = AEAD.Crypto_AEAD_ChaCha20Poly1305_Decrypt(encrypted, nonce, key, additionalData);
+         
+         Console.WriteLine($"Crypto_AEAD_ChaCha20Poly1305_Encrypt works: {Encoding.UTF8.GetString(decrypted)}");
       }
    }
 }
