@@ -30,7 +30,7 @@ namespace BlazorSodium.Sodium
       /// <summary>
       /// Convert an Ed25519 public key to an X25519 public key.
       /// </summary>
-      /// <param name="ed25519PublicKey"></param>
+      /// <param name="publicKey"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_ed25519_pk_to_curve25519.json"/>
       public static byte[] Crypto_Sign_Ed25519_PK_To_Curve25519(byte[] publicKey)
@@ -39,7 +39,7 @@ namespace BlazorSodium.Sodium
       /// <summary>
       /// Convert an Ed25519 private key to an X25519 private key.
       /// </summary>
-      /// <param name="ed25519PrivateKey"></param>
+      /// <param name="privateKey"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_ed25519_sk_to_curve25519.json"/>
       public static byte[] Crypto_Sign_Ed25519_SK_To_Curve25519(byte[] privateKey)

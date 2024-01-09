@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices.JavaScript;
+﻿using System;
+using System.Runtime.InteropServices.JavaScript;
 using System.Runtime.Versioning;
 
 namespace BlazorSodium.Sodium.Models
@@ -17,8 +18,12 @@ namespace BlazorSodium.Sodium.Models
       [SupportedOSPlatform("browser")]
       public static SecretBoxDetached FromJavaScript(JSObject jsObject)
       {
-         byte[] mac = jsObject.GetPropertyAsByteArray("mac");
-         byte[] cipher = jsObject.GetPropertyAsByteArray("cipher");
+         byte[] mac = jsObject.GetPropertyAsByteArray("mac")
+            ?? throw new NullReferenceException("'mac' cannot be null.");
+         
+         byte[] cipher = jsObject.GetPropertyAsByteArray("cipher")
+            ?? throw new NullReferenceException("'cipher' cannot be null.");
+         
          return new SecretBoxDetached(mac, cipher);
       }
    }

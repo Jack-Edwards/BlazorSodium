@@ -18,8 +18,12 @@ namespace BlazorSodium.Sodium.Models
       [SupportedOSPlatform("browser")]
       public static SessionKeys FromJavaScript(JSObject jsObject)
       {
-         byte[] receiveKey = jsObject.GetPropertyAsByteArray("sharedRx");
-         byte[] transmitKey = jsObject.GetPropertyAsByteArray("sharedTx");
+         byte[] receiveKey = jsObject.GetPropertyAsByteArray("sharedRx")
+            ?? throw new NullReferenceException("'sharedRx' cannot be null.");
+         
+         byte[] transmitKey = jsObject.GetPropertyAsByteArray("sharedTx")
+            ?? throw new NullReferenceException("'sharedTx' cannot be null.");
+         
          return new SessionKeys(receiveKey, transmitKey);
       }
    }

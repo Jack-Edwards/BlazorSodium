@@ -1,17 +1,18 @@
 ﻿using BlazorSodium.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.JSInterop;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlazorSodium.Extensions
 {
+   /// <summary>
+   /// Static class to help add BlazorSodium to the project.
+   /// </summary>
    public static class AddBlazorSodiumExtension
    {
+      /// <summary>
+      /// Add IBlazorSodiumService as a scoped service.
+      /// </summary>
+      /// <param name="services"></param>
       public static void AddBlazorSodium(this IServiceCollection services)
       {
          services.TryAddScoped<IBlazorSodiumService, BlazorSodiumService>();
