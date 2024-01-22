@@ -28,7 +28,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_decrypt.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_Decrypt(byte[] ciphertext, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_Decrypt(byte[] ciphertext, byte[] publicNonce, byte[] key, string? additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_Decrypt_Interop(secretNonce: null, ciphertext: ciphertext, additionalData: additionalData, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -40,7 +40,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_decrypt_detached.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_Decrypt_Detached(AEADBoxDetached detachedBox, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_Decrypt_Detached(AEADBoxDetached detachedBox, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_Decrypt_Detached_Interop(secretNonce: null, ciphertext: detachedBox.Cipher, mac: detachedBox.MessageAuthenticationCode, additionalData: additionalData, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -52,7 +52,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_decrypt_detached.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_Decrypt_Detached(AEADBoxDetached detachedBox, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_Decrypt_Detached(AEADBoxDetached detachedBox, byte[] publicNonce, byte[] key, string? additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_Decrypt_Detached_Interop(secretNonce: null, ciphertext: detachedBox.Cipher, mac: detachedBox.MessageAuthenticationCode, additionalData: additionalData, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -64,7 +64,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_encrypt.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt(byte[] message, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt(byte[] message, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -76,7 +76,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_encrypt.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt(byte[] message, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt(byte[] message, byte[] publicNonce, byte[] key, string? additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -88,7 +88,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_encrypt.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt(string message, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt(string message, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -100,7 +100,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_encrypt.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt(string message, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_Encrypt(string message, byte[] publicNonce, byte[] key, string? additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_Encrypt_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -112,7 +112,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_encrypt_detached.json"/>
-      public static AEADBoxDetached Crypto_AEAD_ChaCha20Poly1305_Encrypt_Detached(byte[] message, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static AEADBoxDetached Crypto_AEAD_ChaCha20Poly1305_Encrypt_Detached(byte[] message, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
       {
          JSObject jsObject = Crypto_AEAD_ChaCha20Poly1305_Encrypt_Detached_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
          return AEADBoxDetached.FromJavaScript(jsObject);
@@ -127,7 +127,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_encrypt_detached.json"/>
-      public static AEADBoxDetached Crypto_AEAD_ChaCha20Poly1305_Encrypt_Detached(byte[] message, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static AEADBoxDetached Crypto_AEAD_ChaCha20Poly1305_Encrypt_Detached(byte[] message, byte[] publicNonce, byte[] key, string? additionalData = null)
       {
          JSObject jsObject = Crypto_AEAD_ChaCha20Poly1305_Encrypt_Detached_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
          return AEADBoxDetached.FromJavaScript(jsObject);
@@ -142,7 +142,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_encrypt_detached.json"/>
-      public static AEADBoxDetached Crypto_AEAD_ChaCha20Poly1305_Encrypt_Detached(string message, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static AEADBoxDetached Crypto_AEAD_ChaCha20Poly1305_Encrypt_Detached(string message, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
       {
          JSObject jsObject = Crypto_AEAD_ChaCha20Poly1305_Encrypt_Detached_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
          return AEADBoxDetached.FromJavaScript(jsObject);
@@ -157,7 +157,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_encrypt_detached.json"/>
-      public static AEADBoxDetached Crypto_AEAD_ChaCha20Poly1305_Encrypt_Detached(string message, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static AEADBoxDetached Crypto_AEAD_ChaCha20Poly1305_Encrypt_Detached(string message, byte[] publicNonce, byte[] key, string? additionalData = null)
       {
          JSObject jsObject = Crypto_AEAD_ChaCha20Poly1305_Encrypt_Detached_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
          return AEADBoxDetached.FromJavaScript(jsObject);
@@ -172,7 +172,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_ietf_decrypt.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Decypt(byte[] ciphertext, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Decrypt(byte[] ciphertext, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_IETF_Decrypt_Interop(secretNonce: null, ciphertext: ciphertext, additionalData: additionalData, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -184,7 +184,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_ietf_decrypt.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Decypt(byte[] ciphertext, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Decrypt(byte[] ciphertext, byte[] publicNonce, byte[] key, string? additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_IETF_Decrypt_Interop(secretNonce: null, ciphertext: ciphertext, additionalData: additionalData, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -196,7 +196,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_ietf_decrypt_detached.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Decrypt_Detached(AEADBoxDetached detachedBox, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Decrypt_Detached(AEADBoxDetached detachedBox, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_IETF_Decrypt_Detached_Interop(secretNonce: null, ciphertext: detachedBox.Cipher, mac: detachedBox.MessageAuthenticationCode, additionalData: additionalData, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -208,7 +208,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_ietf_decrypt_detached.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Decrypt_Detached(AEADBoxDetached detachedBox, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Decrypt_Detached(AEADBoxDetached detachedBox, byte[] publicNonce, byte[] key, string? additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_IETF_Decrypt_Detached_Interop(secretNonce: null, ciphertext: detachedBox.Cipher, mac: detachedBox.MessageAuthenticationCode, additionalData: additionalData, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -220,7 +220,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_ietf_encrypt.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Encrypt(byte[] message, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Encrypt(byte[] message, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_IETF_Encrypt_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -232,7 +232,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_ietf_encrypt.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Encrypt(byte[] message, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Encrypt(byte[] message, byte[] publicNonce, byte[] key, string? additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_IETF_Encrypt_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -244,7 +244,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_ietf_encrypt.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Encrypt(string message, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Encrypt(string message, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_IETF_Encrypt_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -256,7 +256,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_ietf_encrypt.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Encrypt(string message, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Encrypt(string message, byte[] publicNonce, byte[] key, string? additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_IETF_Encrypt_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -268,7 +268,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_ietf_encrypt_detached.json"/>
-      public static AEADBoxDetached Crypto_AEAD_Chacha20Poly1305_Encrypt_Detached(byte[] message, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static AEADBoxDetached Crypto_AEAD_Chacha20Poly1305_Encrypt_Detached(byte[] message, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
       {
          JSObject jsObject = Crypto_AEAD_Chacha20Poly1305_IETF_Encrypt_Detached_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
          return AEADBoxDetached.FromJavaScript(jsObject);
@@ -283,7 +283,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_ietf_encrypt_detached.json"/>
-      public static AEADBoxDetached Crypto_AEAD_Chacha20Poly1305_Encrypt_Detached(byte[] message, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static AEADBoxDetached Crypto_AEAD_Chacha20Poly1305_Encrypt_Detached(byte[] message, byte[] publicNonce, byte[] key, string? additionalData = null)
       {
          JSObject jsObject = Crypto_AEAD_Chacha20Poly1305_IETF_Encrypt_Detached_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
          return AEADBoxDetached.FromJavaScript(jsObject);
@@ -298,7 +298,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_ietf_encrypt_detached.json"/>
-      public static AEADBoxDetached Crypto_AEAD_Chacha20Poly1305_Encrypt_Detached(string message, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static AEADBoxDetached Crypto_AEAD_Chacha20Poly1305_Encrypt_Detached(string message, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
       {
          JSObject jsObject = Crypto_AEAD_Chacha20Poly1305_IETF_Encrypt_Detached_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
          return AEADBoxDetached.FromJavaScript(jsObject);
@@ -313,7 +313,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_ietf_encrypt_detached.json"/>
-      public static AEADBoxDetached Crypto_AEAD_Chacha20Poly1305_Encrypt_Detached(string message, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static AEADBoxDetached Crypto_AEAD_Chacha20Poly1305_Encrypt_Detached(string message, byte[] publicNonce, byte[] key, string? additionalData = null)
       {
          JSObject jsObject = Crypto_AEAD_Chacha20Poly1305_IETF_Encrypt_Detached_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
          return AEADBoxDetached.FromJavaScript(jsObject);
@@ -344,7 +344,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_xchacha20poly1305_ietf_decrypt.json"/>
-      public static byte[] Crypto_AEAD_XChaCha20Poly1305_IETF_Decrypt(byte[] ciphertext, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static byte[] Crypto_AEAD_XChaCha20Poly1305_IETF_Decrypt(byte[] ciphertext, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
          => Crypto_AEAD_XChaCha20Poly1305_IETF_Decrypt_Interop(secretNonce: null, ciphertext: ciphertext, additionalData: additionalData, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -356,7 +356,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_xchacha20poly1305_ietf_decrypt.json"/>
-      public static byte[] Crypto_AEAD_XChaCha20Poly1305_IETF_Decrypt(byte[] ciphertext, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static byte[] Crypto_AEAD_XChaCha20Poly1305_IETF_Decrypt(byte[] ciphertext, byte[] publicNonce, byte[] key, string? additionalData = null)
          => Crypto_AEAD_XChaCha20Poly1305_IETF_Decrypt_Interop(secretNonce: null, ciphertext: ciphertext, additionalData: additionalData, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -368,7 +368,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_xchacha20poly1305_ietf_decrypt_detached.json"/>
-      public static byte[] Crypto_AEAD_XChaCha20Poly1305_IETF_Decrypt_Detached(AEADBoxDetached detachedBox, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static byte[] Crypto_AEAD_XChaCha20Poly1305_IETF_Decrypt_Detached(AEADBoxDetached detachedBox, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
          => Crypto_AEAD_XChaCha20Poly1305_IETF_Decrypt_Detached_Interop(secretNonce: null, ciphertext: detachedBox.Cipher, mac: detachedBox.MessageAuthenticationCode, additionalData: additionalData, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -380,7 +380,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_xchacha20poly1305_ietf_decrypt_detached.json"/>
-      public static byte[] Crypto_AEAD_XChaCha20Poly1305_IETF_Decrypt_Detached(AEADBoxDetached detachedBox, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static byte[] Crypto_AEAD_XChaCha20Poly1305_IETF_Decrypt_Detached(AEADBoxDetached detachedBox, byte[] publicNonce, byte[] key, string? additionalData = null)
          => Crypto_AEAD_XChaCha20Poly1305_IETF_Decrypt_Detached_Interop(secretNonce: null, ciphertext: detachedBox.Cipher, mac: detachedBox.MessageAuthenticationCode, additionalData: additionalData, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -392,7 +392,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_xchacha20poly1305_ietf_encrypt.json"/>
-      public static byte[] Crypto_AEAD_XChaCha20Poly1305_IETF_Encrypt(byte[] message, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static byte[] Crypto_AEAD_XChaCha20Poly1305_IETF_Encrypt(byte[] message, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
          => Crypto_AEAD_XChaCha20Poly1305_IETF_Encrypt_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -404,7 +404,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_xchacha20poly1305_ietf_encrypt.json"/>
-      public static byte[] Crypto_AEAD_XChaCha20Poly1305_IETF_Encrypt(byte[] message, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static byte[] Crypto_AEAD_XChaCha20Poly1305_IETF_Encrypt(byte[] message, byte[] publicNonce, byte[] key, string? additionalData = null)
          => Crypto_AEAD_XChaCha20Poly1305_IETF_Encrypt_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -416,7 +416,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_xchacha20poly1305_ietf_encrypt.json"/>
-      public static byte[] Crypto_AEAD_XChaCha20Poly1305_IETF_Encrypt(string message, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static byte[] Crypto_AEAD_XChaCha20Poly1305_IETF_Encrypt(string message, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
          => Crypto_AEAD_XChaCha20Poly1305_IETF_Encrypt_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -428,7 +428,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_xchacha20poly1305_ietf_encrypt.json"/>
-      public static byte[] Crypto_AEAD_XChaCha20Poly1305_IETF_Encrypt(string message, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static byte[] Crypto_AEAD_XChaCha20Poly1305_IETF_Encrypt(string message, byte[] publicNonce, byte[] key, string? additionalData = null)
          => Crypto_AEAD_XChaCha20Poly1305_IETF_Encrypt_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -440,7 +440,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_xchacha20poly1305_ietf_encrypt_detached.json"/>
-      public static AEADBoxDetached Crypto_AEAD_XChacha20Poly1305_Encrypt_Detached(byte[] message, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static AEADBoxDetached Crypto_AEAD_XChacha20Poly1305_Encrypt_Detached(byte[] message, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
       {
          JSObject jsObject = Crypto_AEAD_XChacha20Poly1305_IETF_Encrypt_Detached_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
          return AEADBoxDetached.FromJavaScript(jsObject);
@@ -455,7 +455,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_xchacha20poly1305_ietf_encrypt_detached.json"/>
-      public static AEADBoxDetached Crypto_AEAD_XChacha20Poly1305_Encrypt_Detached(byte[] message, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static AEADBoxDetached Crypto_AEAD_XChacha20Poly1305_Encrypt_Detached(byte[] message, byte[] publicNonce, byte[] key, string? additionalData = null)
       {
          JSObject jsObject = Crypto_AEAD_XChacha20Poly1305_IETF_Encrypt_Detached_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
          return AEADBoxDetached.FromJavaScript(jsObject);
@@ -470,7 +470,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_xchacha20poly1305_ietf_encrypt_detached.json"/>
-      public static AEADBoxDetached Crypto_AEAD_XChacha20Poly1305_Encrypt_Detached(string message, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static AEADBoxDetached Crypto_AEAD_XChacha20Poly1305_Encrypt_Detached(string message, byte[] publicNonce, byte[] key, byte[]? additionalData = null)
       {
          JSObject jsObject = Crypto_AEAD_XChacha20Poly1305_IETF_Encrypt_Detached_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
          return AEADBoxDetached.FromJavaScript(jsObject);
@@ -485,7 +485,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_xchacha20poly1305_ietf_encrypt_detached.json"/>
-      public static AEADBoxDetached Crypto_AEAD_XChacha20Poly1305_Encrypt_Detached(string message, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static AEADBoxDetached Crypto_AEAD_XChacha20Poly1305_Encrypt_Detached(string message, byte[] publicNonce, byte[] key, string? additionalData = null)
       {
          JSObject jsObject = Crypto_AEAD_XChacha20Poly1305_IETF_Encrypt_Detached_Interop(message: message, additionalData: additionalData, secretNonce: null, publicNonce: publicNonce, key: key);
          return AEADBoxDetached.FromJavaScript(jsObject);
