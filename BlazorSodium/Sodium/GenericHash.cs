@@ -14,7 +14,7 @@ namespace BlazorSodium.Sodium
       /// <param name="key">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_generichash.json"/>
-      public static byte[] Crypto_GenericHash(uint hashLength, byte[] message, byte[] key = null)
+      public static byte[] Crypto_GenericHash(uint hashLength, byte[] message, byte[]? key = null)
          => Crypto_GenericHash_Interop(hashLength, message, key);
 
       /// <summary>
@@ -25,7 +25,7 @@ namespace BlazorSodium.Sodium
       /// <param name="key">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_generichash.json"/>
-      public static byte[] Crypto_GenericHash(uint hashLength, string message, byte[] key = null)
+      public static byte[] Crypto_GenericHash(uint hashLength, string message, byte[]? key = null)
          => Crypto_GenericHash_Interop(hashLength, message, key);
 
       /// <summary>
@@ -45,7 +45,7 @@ namespace BlazorSodium.Sodium
       /// <param name="key"></param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_generichash_init.json"/>
-      public static StateAddress Crypto_GenericHash_Init(uint hashLength, byte[] key = null)
+      public static StateAddress Crypto_GenericHash_Init(uint hashLength, byte[]? key = null)
       {
          int stateAddress = Crypto_GenericHash_Init_Interop(key, hashLength);
          return new StateAddress(stateAddress);
