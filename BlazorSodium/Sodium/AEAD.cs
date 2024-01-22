@@ -172,7 +172,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_ietf_decrypt.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Decypt(byte[] ciphertext, byte[] publicNonce, byte[] key, byte[] additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Decrypt(byte[] ciphertext, byte[] publicNonce, byte[] key, byte[] additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_IETF_Decrypt_Interop(secretNonce: null, ciphertext: ciphertext, additionalData: additionalData, publicNonce: publicNonce, key: key);
 
       /// <summary>
@@ -184,7 +184,7 @@ namespace BlazorSodium.Sodium
       /// <param name="additionalData">Optional.</param>
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_aead_chacha20poly1305_ietf_decrypt.json"/>
-      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Decypt(byte[] ciphertext, byte[] publicNonce, byte[] key, string additionalData = null)
+      public static byte[] Crypto_AEAD_ChaCha20Poly1305_IETF_Decrypt(byte[] ciphertext, byte[] publicNonce, byte[] key, string additionalData = null)
          => Crypto_AEAD_ChaCha20Poly1305_IETF_Decrypt_Interop(secretNonce: null, ciphertext: ciphertext, additionalData: additionalData, publicNonce: publicNonce, key: key);
 
       /// <summary>
