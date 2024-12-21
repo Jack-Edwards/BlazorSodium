@@ -15,7 +15,7 @@ defaults:
     shell: pwsh
     
 jobs:
-  pack:
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -34,26 +34,18 @@ jobs:
           
       - name: Install wasm-tools
         run: dotnet workload install wasm-tools
+               
+      - name: Restore
+        run: dotnet restore
+      
+      - name: Build
+        run: dotnet build -c Release --no-restore
           
-      - run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
-
-  push:
-    if: github.event_name == 'release'
-    runs-on: ubuntu-latest
-    steps:
-      # Download the NuGet package created in the previous job
-      - uses: actions/download-artifact@d0ce8fd1167ed839810201de977912a090ab10a7 #v4
-        with:
-          name: nuget
-          path: ${{ env.NuGetDirectory }}
-          
-      - name: Setup .NET
-        uses: actions/setup-dotnet@e4c228a8417679d13c6a1e7131e3e8d82dff4cd3 #v4
-        with:
-          dotnet-version: 9.0.x
-          
-      - name: Publish NuGet package
-        run: |
-          foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
-              dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
-          }
+      - name: Pack
+        run: dotnet pack -c Release --no-build --output ${{ env.NuGetDirectory }}
+        
+      - name: Push nupkg
+        run: dotnet nuget push ${{ env.NuGetDirectory }}/*.nupkg --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+        
+      - name: Push snupkg
+        run: dotnet nuget push ${{ env.NuGetDirectory }}/*.snupkg --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
