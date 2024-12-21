@@ -25,7 +25,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d #v3
         with:
-          version: 8
+          version: 9
 
       - name: Setup .NET
         uses: actions/setup-dotnet@e4c228a8417679d13c6a1e7131e3e8d82dff4cd3 #v4
