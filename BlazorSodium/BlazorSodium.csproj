@@ -16,8 +16,6 @@
       <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
       <IncludeSymbols>True</IncludeSymbols>
       <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-      <Version>1.4.0</Version>
-      <PackageVersion>1.4.0</PackageVersion>
       <LangVersion>12</LangVersion>
    </PropertyGroup>
 
@@ -36,6 +34,10 @@
    <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0" Condition="'$(TargetFramework)' == 'net8.0'" />
       <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.0" Condition="'$(TargetFramework)' == 'net9.0'" />
+      <PackageReference Include="MinVer" Version="6.0.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
    </ItemGroup>
 
    <ItemGroup>
