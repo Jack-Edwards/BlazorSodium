@@ -58,7 +58,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_generichash_init.json"/>
       [JSImport("sodium.crypto_generichash_init", "blazorSodium")]
-      internal static partial int Crypto_GenericHash_Init_Interop(byte[] key, [JSMarshalAs<JSType.Number>] long hashLength);
+      internal static partial int Crypto_GenericHash_Init_Interop(byte[]? key, [JSMarshalAs<JSType.Number>] long hashLength);
 
       /// <summary>
       /// Internal method.
