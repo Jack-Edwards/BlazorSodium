@@ -17,6 +17,7 @@
       <IncludeSymbols>True</IncludeSymbols>
       <SymbolPackageFormat>snupkg</SymbolPackageFormat>
       <LangVersion>12</LangVersion>
+      <DisableBuildCompression>true</DisableBuildCompression>
    </PropertyGroup>
 
    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -46,9 +47,15 @@
      </None>
    </ItemGroup>
 
-   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+   <Target Name="PreBuild" BeforeTargets="DispatchToInnerBuilds">
       <Exec Command="pnpm install" />
       <Exec Command="pnpm run build" />
    </Target>
 
+   <Target Name="AfterClean" AfterTargets="Clean">
+      <Delete Files="wwwroot\blazorSodium.bundle.js" ContinueOnError="true" />
+      <Delete Files="wwwroot\blazorSodium.bundle.js.gz" ContinueOnError="true" />
+      <Delete Files="wwwroot\blazorSodium.bundle.js.br" ContinueOnError="true" />
+   </Target>
+   
 </Project>
