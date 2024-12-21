@@ -1,0 +1,51 @@
+name: publish
+on:
+  workflow_dispatch: # Allow running the workflow manually from the GitHub UI
+  release:
+    types:
+      - published # Run the workflow when a new GitHub release is published
+        
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+  DOTNET_NOLOGO: true
+  NuGetDirectory: ${{ github.workspace }}/nuget
+  
+defaults:
+  run:
+    shell: pwsh
+    
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          fetch-depth: 0 # Get all history to allow automatic versioning using MinVer
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d #v3
+        with:
+          version: 9
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@e4c228a8417679d13c6a1e7131e3e8d82dff4cd3 #v4
+        with:
+          dotnet-version: 9.0.x
+          
+      - name: Install wasm-tools
+        run: dotnet workload install wasm-tools
+               
+      - name: Restore
+        run: dotnet restore
+      
+      - name: Build
+        run: dotnet build -c Release --no-restore
+          
+      - name: Pack
+        run: dotnet pack -c Release --no-build --output ${{ env.NuGetDirectory }}
+        
+      - name: Push nupkg
+        run: dotnet nuget push ${{ env.NuGetDirectory }}/*.nupkg --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+        
+      - name: Push snupkg
+        run: dotnet nuget push ${{ env.NuGetDirectory }}/*.snupkg --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate

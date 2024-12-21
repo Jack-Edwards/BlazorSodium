@@ -91,7 +91,7 @@ namespace BlazorSodium.Sodium
       /// <returns></returns>
       /// <see cref="https://github.com/jedisct1/libsodium.js/blob/master/wrapper/symbols/crypto_sign_init.json"/>
       /// <remarks>
-      /// Switching the return type to 'long' and applying a [return: JSMarshalAs<JSType.Number>]
+      /// Switching the return type to 'long' and applying a [return: JSMarshalAs&lt;JSType.Number&gt;]
       /// attribute does not work any better than simply returning an 'int'.
       /// 
       /// A 'System.Runtime.InteropServices.JavaScript.JSException' exception is thrown when

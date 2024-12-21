@@ -39,3 +39,7 @@ Now use the static wrapper methods from anywhere in your application.
 
 When a Sodium methods returns `byte[]` data, you often need to use `Array.CopyTo(Array array, int index)` to copy the data to an initialized array if you intend to use the data outside of the current scope.
 Otherwise the `byte[]` may be garbage collected and your variable will be `null`.
+
+## Useful developer documentation
+
+[Supported JSInterop types](https://learn.microsoft.com/en-us/aspnet/core/blazor/javascript-interoperability/import-export-interop)
