@@ -1,0 +1,58 @@
+name: publish
+on:
+  release:
+    types:
+      - published # Run the workflow when a new GitHub release is published
+        
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+  DOTNET_NOLOGO: true
+  NuGetDirectory: ${{ github.workspace }}/nuget
+  
+defaults:
+  run:
+    shell: pwsh
+    
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          fetch-depth: 0 # Get all history to allow automatic versioning using MinVer
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d #v3
+        with:
+          version: 8
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@e4c228a8417679d13c6a1e7131e3e8d82dff4cd3 #v4
+        with:
+          dotnet-version: 9.0.x
+          
+      - name: Install wasm-tools
+        run: dotnet workload install wasm-tools
+          
+      - run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
+
+  push:
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+      # Download the NuGet package created in the previous job
+      - uses: actions/download-artifact@d0ce8fd1167ed839810201de977912a090ab10a7 #v4
+        with:
+          name: nuget
+          path: ${{ env.NuGetDirectory }}
+          
+      - name: Setup .NET
+        uses: actions/setup-dotnet@e4c228a8417679d13c6a1e7131e3e8d82dff4cd3 #v4
+        with:
+          dotnet-version: 9.0.x
+          
+      - name: Publish NuGet package
+        run: |
+          foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
+              dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+          }
