@@ -21,6 +21,14 @@
       <LangVersion>12</LangVersion>
    </PropertyGroup>
 
+   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+     <NoWarn>1701;1702;NU5105;CS1591;NU5105;NU5105;CS1584</NoWarn>
+   </PropertyGroup>
+
+   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+     <NoWarn>1701;1702;NU5105;CS1591;NU5105;NU5105;CS1584</NoWarn>
+   </PropertyGroup>
+
    <ItemGroup>
       <SupportedPlatform Include="browser" />
    </ItemGroup>
