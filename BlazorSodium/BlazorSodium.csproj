@@ -6,7 +6,7 @@
       <ImplicitUsings>disable</ImplicitUsings>
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
       <GenerateDocumentationFile>true</GenerateDocumentationFile>
-      <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+      <IsPackable>true</IsPackable>
       <Title>BlazorSodium</Title>
       <Authors>Jack Edwards</Authors>
       <Description>Simple wrapper over libsodium.js to use in Blazor WASM projects</Description>
@@ -57,5 +57,11 @@
       <Delete Files="wwwroot\blazorSodium.bundle.js.gz" ContinueOnError="true" />
       <Delete Files="wwwroot\blazorSodium.bundle.js.br" ContinueOnError="true" />
    </Target>
+
+   <PropertyGroup Label="MinVer">
+      <MinVerAutoIncrement>minor</MinVerAutoIncrement>
+      <MinVerDefaultPreReleaseIdentifiers>preview.0</MinVerDefaultPreReleaseIdentifiers>
+      <MinVerTagPrefix>v</MinVerTagPrefix>
+   </PropertyGroup>
    
 </Project>
