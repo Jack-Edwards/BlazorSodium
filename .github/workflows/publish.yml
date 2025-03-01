@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0 # Get all history to allow automatic versioning using MinVer
 
       - name: Install pnpm
-        uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d #v3
+        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda #v3
         with:
           version: 9
 
