@@ -28,7 +28,7 @@ jobs:
           version: 9
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@e4c228a8417679d13c6a1e7131e3e8d82dff4cd3 #v4
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 #v4
         with:
           dotnet-version: 9.0.x
           
